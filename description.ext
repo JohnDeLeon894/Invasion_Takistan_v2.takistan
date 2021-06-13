@@ -1,0 +1,44 @@
+
+onLoadName = "Invasion of Takistan";
+OnLoadMission = "This is the mission where you soldier around and do soldier things. ";
+briefingName = "Invasion of Takistan";
+// loadscreen="girl-with-machine-gun.jpg";
+loadscreen="hotGirlWithGun.jpg";
+pictureMap = "";
+overviewPicture="takistanInvasionPhoto.jpg";
+// overviewPicture="girl-with-machine-gun.jpg";
+
+overviewText = "This is the mission where you soldier around and do soldier things.";
+author = "Mr D.";
+
+
+class cfgFunctions{
+  class jMD {
+    tag = "JMD";
+    class functions {
+      file = "functions";
+      class spawnGroups {
+        description = " spawns enemies when called /n [_group, _count, _unitsArray, _position] jMD_fnc_call enemySpawn;";
+        file = "functions\spawnGroups.sqf";
+      };
+      class deleteAndSetWaypoints {
+        file = "functions\deleteAndSetWaypoints.sqf";
+        description = "get group waypoints and delete them /n [_group, _radious, _position, _delete] call jMD_fnc_deleteAndSetWaypoints"; 
+      };
+      class spawnLoop {
+        file = "functions\spawnLoop.sqf";
+      };
+      class sectorSpawn {
+        file = "functions\sectorSpawn.sqf";
+      };
+      class initFromLoad {
+        file = "functions\initFromLoad.sqf";
+      };
+      class wordArrayDefinitions {
+        preInit = 1;
+        file = "functions\preInit\wordArrayDefinitions.sqf";
+      };
+    };
+  };
+};
+
