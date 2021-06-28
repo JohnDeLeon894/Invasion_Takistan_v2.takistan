@@ -2,6 +2,9 @@
 private _markerCount = 0;
 private _fireMissionFailed = false;
 player createDiarySubject['Arty Record', 'Artilory Record'];
+// private _artyRounds = 'rhs_mag_m26a1_6';
+private _artyRounds = 'rhs_mag_mgm168_block4_1';
+// private _artyRounds = 'rhs_12Rnd_m821_HE';
 
 
 private _nameFireMission = {
@@ -47,11 +50,11 @@ private _replaceMarker = {
 				_step = _step + 1; 
 				hint format['stopped at step %1',_step];
 				[_scopedMarker, _fireMissionName] call _replaceMarker;
-				private _eta = _x getArtilleryETA[_pos, "rhs_12Rnd_m821_HE"];
+				private _eta = _x getArtilleryETA[_pos, _artyRounds];
 				private _artyResponse = format ['%1, firing on grid %2. Rounds ETA in %3. Out.', _x, _gridPos, _eta];
 				_x commandChat _artyResponse;
 				_firMissionRecord = player createDiaryRecord ['Arty Record',[_fireMissionName, _artyResponse]];
-				_x commandArtilleryFire [_pos, "rhs_12Rnd_m821_HE", 12];
+				_x commandArtilleryFire [_pos, _artyRounds, 1];
 			};
 			_step = _step + 1; 
 			_timesFailed = _timesFailed + 1;
