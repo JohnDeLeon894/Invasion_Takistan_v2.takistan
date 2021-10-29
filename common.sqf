@@ -128,6 +128,33 @@ while {_continue} do {
 	} ;
 };
 
+ARRAY_OF_ROUTES = [ROUT_ONE, ROUT_TWO, ROUT_THREE] call BIS_fnc_selectRandom;
+
+LOCATION_TYPES = [
+    'Airport',
+    'Area',
+    'BorderCrossing',
+    'CityCenter',
+    'CivilDefense',
+    'CulturalProperty',
+    'DangerousForces',
+    'Flag',
+    'FlatArea',
+    'FlatAreaCity',
+    'FlatAreaCitySmall',
+    'HistoricalSite',
+    'Name',
+    'NameCity',
+    'NameCityCapital',
+    'NameLocal',
+    'NameMarine',
+    'NameVillage',
+    'SafetyZone',
+    'Strategic',
+    'StrongpointArea',
+    'ViewPoint'
+];
+
 // units arrays 
 // enemy units 
 Isis_Vehicles = ['LOP_ISTS_OPF_Offroad_M2', 'LOP_ISTS_OPF_M113_W', 'LOP_ISTS_OPF_BTR60', 'LOP_ISTS_OPF_Landrover_M2', 'LOP_ISTS_OPF_M1025_W_M2', 'O_IS_Technical_Armed_01', 'O_IS_Captured_Humvee_01'];
@@ -141,17 +168,21 @@ bluforUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_wd' && getTex
 bluforUnits = bluforUnitsConfig apply {configName _x};
 
 // desert camo friendly soldiers
-bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' && ['_d', getText (_x >> 'uniformClass') ] call BIS_fnc_inString" configClasses (configFile >> "CfgVehicles");
+bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' &&
+  getText (_x >> 'uniformClass') == 'rhs_uniform_FROG01_d'" configClasses (configFile >> "CfgVehicles");
 bluforDesertUnits = bluforUnitsConfig apply {configName _x};
 
 // new vietnam troups
 NVA_Unit_Configs = "getText (_x >> 'faction') == 'O_PAVN' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
 NVAUnits = NVA_Unit_Configs apply {configName _x};
+NVA_Vehicle_Configs = "getText (_x >> 'faction') == 'O_VC' && getText (_x >> 'simulation') == 'carX'" configClasses (configFile >> "CfgVehicles");
+NVAVehicles = NVA_Vehicle_Configs apply {configName _x};
 
 
 // new macv units
 MACVUnitsConfig= "getText (_x >> 'faction') == 'B_MACV' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'"    configClasses (configFile >> "CfgVehicles");
 MACVUnits = MACVUnitsConfig apply {configName _x};
+
 
 // global variable for units array
 BLU_UNITS_ARRAY = bluforDesertUnits;
@@ -159,3 +190,5 @@ BLU_UNITS_ARRAY = bluforDesertUnits;
 RED_UNITS_ARRAY = Isis_units;
 
 RED_VEHICLE_ARRAY = Isis_Vehicles;
+
+COMMON_DONE = true;

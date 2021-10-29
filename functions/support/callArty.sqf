@@ -3,10 +3,8 @@ private _markerCount = 0;
 private _fireMissionFailed = false;
 player createDiarySubject['Arty Record', 'Artilory Record'];
 // private _artyRounds = 'rhs_mag_m26a1_6';
-private _artyRounds = 'rhs_mag_mgm168_block4_1';
-// private _artyRounds = 'rhs_12Rnd_m821_HE';
-
-
+private _artyRounds = '32Rnd_155mm_Mo_shells';
+//["32Rnd_155mm_Mo_shells","4Rnd_155mm_Mo_guided","6Rnd_155mm_Mo_mine","2Rnd_155mm_Mo_Cluster","6Rnd_155mm_Mo_smoke","2Rnd_155mm_Mo_LG","6Rnd_155mm_Mo_AT_mine"]
 private _nameFireMission = {
 	private _verb = VERBS call BIS_fnc_selectRandom;
 	private _noun = NOUNS call BIS_fnc_selectRandom;
@@ -28,11 +26,23 @@ private _replaceMarker = {
 	deleteMarker _mark;
 };
 
+private _parseAmmoType = {
+
+	if ('smoke' in _mrkText) then {_artyRounds ='6Rnd_155mm_Mo_smoke' };
+	if ('lg' in _mrkText) then {_artyRounds = '2Rnd_155mm_Mo_LG'};
+	if ('cluster' in _mrkText) then {_artyRounds = '2Rnd_155mm_Mo_Cluster'};
+	if ('guided' in _mrkText) then {_artyRounds = '4Rnd_155mm_Mo_guided'};
+	// default { _artyRounds ='32Rnd_155mm_Mo_shells'};
+};
+
 {
 	private _fireMissionName = [] call _nameFireMission;
 	private _step = 0;
-	if ((_x find "_USER_DEFINED") >= 0 && markerText _x == 'arty') then {
-
+	private _mrkText = markerText _x;
+	private _isArty = 'arty' in _mrkText;
+	if ((_x find "_USER_DEFINED") >= 0 && _isArty) then {
+		call _parseAmmoType;
+		private _roundsToFire = parseNumber _mrkText;
 		private _scopedMarker = _x;
 		player commandChat format['original name %1', _fireMissionName];
 		private _pos = markerPos _scopedMarker;
@@ -45,23 +55,31 @@ private _replaceMarker = {
 		sleep 5;
 
 		{	
-			_x setAmmo [currentWeapon _x, 12];
-			if(unitReady _x) exitWith {
+			private _withinRange = _pos inRangeOfArtillery [[_x], _artyRounds];
+			private _eta = _x getArtilleryETA[_pos, _artyRounds];
+			private _artyResponse = format ['%1, firing %4 %5 rounds on grid %2. Rounds ETA in %3. Out.', _x, _gridPos, _eta, _roundsToFire, _artyRounds];
+			private _artyNotReady = format ['%1 is not ready', _x];
+
+			// _x setAmmo [currentWeapon _x, 12];
+			_x setVehicleAmmo 1;
+
+			if(unitReady _x && _withinRange) exitWith {
 				_step = _step + 1; 
+				if(_roundsToFire == 0) then{ _roundsToFire = 1};
 				hint format['stopped at step %1',_step];
 				[_scopedMarker, _fireMissionName] call _replaceMarker;
-				private _eta = _x getArtilleryETA[_pos, _artyRounds];
-				private _artyResponse = format ['%1, firing on grid %2. Rounds ETA in %3. Out.', _x, _gridPos, _eta];
 				_x commandChat _artyResponse;
 				_firMissionRecord = player createDiaryRecord ['Arty Record',[_fireMissionName, _artyResponse]];
-				_x commandArtilleryFire [_pos, _artyRounds, 1];
+				_x commandArtilleryFire [_pos, _artyRounds, _roundsToFire];
 			};
 			_step = _step + 1; 
 			_timesFailed = _timesFailed + 1;
 			hint format['stopped at step %1',_step];
-			private _artyNotReady = format ['%1 is not ready', _x];
 			_x commandChat _artyNotReady;
-			 player createDiaryRecord ['Arty Record',[_fireMissionName, _artyNotReady]];
+			if ( ! _withinRange) then {
+				_artyNotReady = 'Not within range';
+			};
+			player createDiaryRecord ['Arty Record',[_fireMissionName, _artyNotReady]];
 			if ( _timesFailed > 4) exitWith {
 				_fireMissionFailed = true;
 			}

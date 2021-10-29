@@ -13,4 +13,4 @@ private _newCallsign = format ['%1 %2', _verb, _noun];
 
 _group setGroupIdGlobal [_newCallsign];
 
-_leader sideChat format [' groupId %1', groupId _group];
+player sideChat format [' groupId %1', groupId _group];

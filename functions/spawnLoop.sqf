@@ -8,7 +8,7 @@ if (!continueLoop) exitWith {
 {
 	// Current result is saved in variable _x
 	private _count = {alive _x} count units _x;
-	private _marker = EAST_POSITIONS call BIS_fnc_selectRandom;
+	private _marker = ([ROUT_ONE, ROUT_TWO, ROUT_THREE] call BIS_fnc_selectRandom) select 0;
 	private _location = markerPos _marker;
 	private _results =  [_x, (RED_UNIT_SIZE - _count), RED_UNITS_ARRAY, EAST_SPAWN] call  jMD_fnc_spawnGroups;
 	private _waypoints = [_x, 200, _location, true, true] call jMD_fnc_deleteAndSetWaypoints;
@@ -20,22 +20,23 @@ if (!continueLoop) exitWith {
 	private _groupSize = BLU_UNIT_SIZE; // desired size of each group
 	private _count = {alive _x}count units _x;
 	private _group = _x;
-	private _routArray = [ROUT_ONE, ROUT_TWO, ROUT_THREE] call BIS_fnc_selectRandom;
+	// private _routArray = [ROUT_ONE, ROUT_TWO, ROUT_THREE] call BIS_fnc_selectRandom;
 	private _results =  [_group, (_groupSize - _count), BLU_UNITS_ARRAY, WEST_SPAWN] call  jMD_fnc_spawnGroups;
 	private _timer = 0;
 
-	while { ( {alive _x}count units _group) < _groupSize } do {
+	while { (({alive _x}count units _group) < _groupSize) && (_group != group player) } do {
 		_timer = _timer + 1;
 		private _count = {alive _x}count units _group;
 		private _results =  [_group, (_groupSize - _count), BLU_UNITS_ARRAY, WEST_SPAWN] call  jMD_fnc_spawnGroups;
 		if (_timer > 255) then { breakTo "unitSpawn"};
 	};
 	if (count waypoints _x < 2) then {
-		{
-			private _loc = markerPos _x;
-			private _waypoints = [_group, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints;
-		}forEach _routArray;
-		private _waypoints = [_group, 100, EAST_SPAWN, false, false] call jMD_fnc_deleteAndSetWaypoints;
+		// {
+		// 	private _loc = markerPos _x;
+		// 	private _waypoints = [_group, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints;
+		// }forEach _routArray;
+		private _wp = ARRAY_OF_ROUTES select 0;
+		private _waypoints = [_group, 100, markerPos _wp, false, false] call jMD_fnc_deleteAndSetWaypoints;
 	};
 	if (doOnce < count FRIENDLY_GROUPS) then {
 		_x setBehaviour "SAFE";
@@ -53,6 +54,17 @@ _vehGroup setBehaviour "SAFE";
 
 { if (_x distance player > 500) then { deleteVehicle _x}} forEach allDeadMen;
 
+// check to see if all support assets are still alive
+
+// if any of the assets are not alive, spawn new and order it to fly in to specified waypoint
+
+// if asset is damaged and at the base, repair and refule assert
+
+// if asset is damaged and away from base...
+	// if crew is alive, repair asset and order to return to base waypoint
+	// if crew is dead, spawn new crew and order them to asset and to bring it back to base. 
+
+	
 
 sleep 1200; //1200 = 20 min
 saveGame;
