@@ -7,7 +7,7 @@ private _position = getMarkerPos 'westSpawn';
 
 // hint 'started';
 for '_i' from 1 to _reinforcementCount do {
-	private _soldier = bluforUnits call BIS_fnc_selectRandom;
+	private _soldier = BLU_UNITS_ARRAY call BIS_fnc_selectRandom;
 	_unit = _group createUnit [_soldier, _position, [],0, "NONE"];
 	_unit moveInAny _transport;
 };

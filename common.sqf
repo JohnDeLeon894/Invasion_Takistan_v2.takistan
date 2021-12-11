@@ -139,7 +139,7 @@ LOCATION_TYPES = [
     'CulturalProperty',
     'DangerousForces',
     'Flag',
-    'FlatArea',
+		'FlatArea',
     'FlatAreaCity',
     'FlatAreaCitySmall',
     'HistoricalSite',
@@ -162,6 +162,12 @@ Isis_Vehicles = ['LOP_ISTS_OPF_Offroad_M2', 'LOP_ISTS_OPF_M113_W', 'LOP_ISTS_OPF
 Isis_Unit_Configs = "getText (_x >> 'faction') == 'LOP_ISTS_OPF' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
 Isis_units = Isis_Unit_Configs apply {configName _x};
 
+BocoHaran_Unit_Configs = "getText (_x >> 'faction') == 'LOP_BH' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
+BocoHaran_units = BocoHaran_Unit_Configs apply {configName _x};
+
+IslamicState_Unit_Configs = "getText (_x >> 'faction') == 'IS' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
+IslamicState_units = IslamicState_Unit_Configs apply {configName _x};
+
 
 // friendly soldiers array 
 bluforUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_wd' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' && ['wd', getText (_x >> 'uniformClass') ] call BIS_fnc_inString" configClasses (configFile >> "CfgVehicles");
@@ -170,7 +176,7 @@ bluforUnits = bluforUnitsConfig apply {configName _x};
 // desert camo friendly soldiers
 bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' &&
   getText (_x >> 'uniformClass') == 'rhs_uniform_FROG01_d'" configClasses (configFile >> "CfgVehicles");
-bluforDesertUnits = bluforUnitsConfig apply {configName _x};
+bluforDesertUnits = bluforDesertUnitsConfig apply {configName _x};
 
 // new vietnam troups
 NVA_Unit_Configs = "getText (_x >> 'faction') == 'O_PAVN' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
@@ -187,7 +193,7 @@ MACVUnits = MACVUnitsConfig apply {configName _x};
 // global variable for units array
 BLU_UNITS_ARRAY = bluforDesertUnits;
 
-RED_UNITS_ARRAY = Isis_units;
+RED_UNITS_ARRAY = Isis_units + BocoHaran_units + IslamicState_units;
 
 RED_VEHICLE_ARRAY = Isis_Vehicles;
 

@@ -1,5 +1,6 @@
 //This is the loop that continuously spawns soldiers until continueLoop = false
-hint 'Spawn loop started';
+
+diag_log 'Spawn loop started';
 if (!continueLoop) exitWith {
 	hint 'loop stopped'
 };
@@ -47,25 +48,24 @@ if (!continueLoop) exitWith {
 
 _vehicleType = RED_VEHICLE_ARRAY call BIS_fnc_selectRandom;
 _veh = [ EAST_VEHICLE_SPAWN, 330, _vehicleType, east] call BIS_fnc_spawnVehicle;
-hint format['Created vehicle %1', _veh];
+hint format['Created vehicle %1', _veh select 0];
 _vehGroup = _veh select 2;
 _vehGroup setBehaviour "SAFE";
-[_vehGroup, 200, position player, true, false] call jMD_fnc_deleteAndSetWaypoints;
+// [_vehGroup, 200, position player, true, false] call jMD_fnc_deleteAndSetWaypoints;
+private _vWp = _vehGroup addWaypoint[position player, 50];
+_vWp waypointAttachVehicle vehicle player;
 
 { if (_x distance player > 500) then { deleteVehicle _x}} forEach allDeadMen;
 
 // check to see if all support assets are still alive
 
-// if any of the assets are not alive, spawn new and order it to fly in to specified waypoint
-
-// if asset is damaged and at the base, repair and refule assert
+[] call jMD_fnc_choppaCheck;
 
 // if asset is damaged and away from base...
 	// if crew is alive, repair asset and order to return to base waypoint
 	// if crew is dead, spawn new crew and order them to asset and to bring it back to base. 
 
-	
-
+diag_log 'Spawn loop end';
 sleep 1200; //1200 = 20 min
 saveGame;
 
