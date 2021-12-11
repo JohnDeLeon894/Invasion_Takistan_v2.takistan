@@ -31,7 +31,11 @@ class cfgFunctions{
       class sectorSpawn {
         file = "functions\sectorSpawn.sqf";
       };
+      class choppaCheck {
+        file = "functions\choppaCheck.sqf";
+      };
       class initFromLoad {
+        preInit = 1;
         file = "functions\initFromLoad.sqf";
       };
       class wordArrayDefinitions {

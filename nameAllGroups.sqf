@@ -3,3 +3,5 @@
 		[_x]execVM 'setGroupCallSign.sqf';
 	};
 } forEach allGroups;
+
+true;

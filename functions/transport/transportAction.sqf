@@ -22,7 +22,7 @@ if (_action == 'reinforce') then {
 _transport sideChat format ['%1 moving to grid %2, action %3', _transport, _mapGrid, _action];
 // hint format ['%1 moving to grid %2, action %3', _transport, _mapGrid, _action];
 _transport move _pos;
-// hint format["moving to %1", _pos] ;
+USER_LZ setPos _pos;
 
 waitUntil {unitReady _transport};
 

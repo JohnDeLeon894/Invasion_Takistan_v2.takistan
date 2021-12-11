@@ -1,5 +1,8 @@
-// [] execVM 'wordArrayDefinitions.sqf';
+['intro',false] call BIS_fnc_blackOut;
+COMMON_DONE = false ;
 [] execVM 'common.sqf';
-sleep 0.5;
+waitUntil {COMMON_DONE};
 [] spawn jMD_fnc_spawnLoop;
-[] execVM 'nameAllGroups.sqf';
+// private _groupsNamed = false;
+_groupsNamed = [] execVM 'nameAllGroups.sqf';
+['intro', true] call BIS_fnc_blackIn;

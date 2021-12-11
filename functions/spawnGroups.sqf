@@ -6,17 +6,18 @@ private _count 			= _this select 1;
 private _unitsArray		= _this select 2;
 private _position 		= _this select 3;
 
-// private _unitsCreated = [];
 if(_count < 1 ) exitWith {hint "exiting spawn loop"};
 // spawns unit and adds to group
 for [{private _i=0}, {_i<_count}, {_i=_i+1}] do {
 	private _soldierRole =  _unitsArray call BIS_fnc_selectRandom; 
-	_soldierRole createUnit [_position, _group];
-	// _unitsCreated pushBack _soldierRole;
-	// hint __unitsCreated
+	private _newRecruit = _group createUnit [_soldierRole, [_position select 0, _position select 1], [], 50, "NONE"];
+	if ( _group == group player ) then {
+		player createDiarySubject['spawnRecord', 'Spawn Record'];
+		player createDiaryRecord ['spawnRecord',[format ['%1', _newRecruit], format['this is the unit spawned: %1', configOf _newRecruit]]];
+	}
+
 };
 
+
 // return value
-// if(count _unitsCreated > 0) then {
-// hint format [" results: %1", _unitsCreated]
-// }
+_group

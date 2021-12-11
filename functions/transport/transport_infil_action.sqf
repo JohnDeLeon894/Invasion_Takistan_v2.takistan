@@ -1,5 +1,10 @@
 private _transport = _this select 0;
 
+if (isNull _transport) exitWith {
+	diag_log 'exiting transport_infil script';
+	hint 'There are no transports available';
+};
+
 waitUntil {{_x in _transport} count units group player == 0};
 
 _transport move getMarkerPos 'rtz';

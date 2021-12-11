@@ -8,4 +8,7 @@ zoneClear = true;
 {
 	call compile format['[%1] execVM "functions\transport\transport_infil_action.sqf"', _x];
 }  forEach TRANSPORTS;
+{
+	call compile format['[%1] execVM "functions\transport\transport_infil_action.sqf"', _x];
+}  forEach CAS;
 
