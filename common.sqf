@@ -45,6 +45,7 @@ ARTY = [
 groupCount = 0;
 continueLoop = true;
 doOnce = 0;
+ONE_LOOP = false;
 BLU_UNIT_SIZE = 8;
 RED_UNIT_SIZE = 8;
 
@@ -168,30 +169,37 @@ BocoHaran_units = BocoHaran_Unit_Configs apply {configName _x};
 IslamicState_Unit_Configs = "getText (_x >> 'faction') == 'IS' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
 IslamicState_units = IslamicState_Unit_Configs apply {configName _x};
 
-
-// friendly soldiers array 
-bluforUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_wd' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' && ['wd', getText (_x >> 'uniformClass') ] call BIS_fnc_inString" configClasses (configFile >> "CfgVehicles");
-bluforUnits = bluforUnitsConfig apply {configName _x};
-
-// desert camo friendly soldiers
-bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' &&
-  getText (_x >> 'uniformClass') == 'rhs_uniform_FROG01_d'" configClasses (configFile >> "CfgVehicles");
-bluforDesertUnits = bluforDesertUnitsConfig apply {configName _x};
-
 // new vietnam troups
 NVA_Unit_Configs = "getText (_x >> 'faction') == 'O_PAVN' && getText (_x >> 'simulation') == 'soldier'" configClasses (configFile >> "CfgVehicles");
 NVAUnits = NVA_Unit_Configs apply {configName _x};
 NVA_Vehicle_Configs = "getText (_x >> 'faction') == 'O_VC' && getText (_x >> 'simulation') == 'carX'" configClasses (configFile >> "CfgVehicles");
 NVAVehicles = NVA_Vehicle_Configs apply {configName _x};
 
+// friendly soldiers array 
+bluforUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_wd' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
+bluforUnits = bluforUnitsConfig apply {configName _x};
 
 // new macv units
-MACVUnitsConfig= "getText (_x >> 'faction') == 'B_MACV' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'"    configClasses (configFile >> "CfgVehicles");
+MACVUnitsConfig= "getText (_x >> 'faction') == 'B_MACV' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
 MACVUnits = MACVUnitsConfig apply {configName _x};
+
+// desert camo friendly soldiers
+bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' &&
+  getText (_x >> 'uniformClass') == 'rhs_uniform_FROG01_d'" configClasses (configFile >> "CfgVehicles");
+bluforDesertUnits = bluforDesertUnitsConfig apply {configName _x};
+
+// desert camo nato soldiers
+natoDesertUnitsConfig= "getText (_x >> 'faction') == 'BLU_NATO_lxWS' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
+natoDesertUnits = natoDesertUnitsConfig apply {configName _x};
+
+natoUnitsConfig= "getText (_x >> 'faction') == 'BLU_F' && getText (_x >> 'simulation') == 'soldier'  && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
+natoUnits = natoUnitsConfig apply {configName _x};
+
+
 
 
 // global variable for units array
-BLU_UNITS_ARRAY = bluforDesertUnits;
+BLU_UNITS_ARRAY = natoDesertUnits;
 
 RED_UNITS_ARRAY = Isis_units + BocoHaran_units + IslamicState_units;
 
