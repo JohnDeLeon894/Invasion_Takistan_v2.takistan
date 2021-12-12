@@ -48,23 +48,23 @@ if ((count waypoints group player) > 1) then {
 	} forEach waypoints group player;
 };
 
-{
-	private [ '_destination'];
-	if (_isTooFewLocations) then {
-		_destination = position _x;
-	} else {
-		_destination = (locationPosition _x);
-	};
+// {
+// 	private [ '_destination'];
+// 	if (_isTooFewLocations) then {
+// 		_destination = position _x;
+// 	} else {
+// 		_destination = (locationPosition _x);
+// 	};
 
-	{
-		private _group = _x;
-		[_x, 50, _destination, false, false] call jMD_fnc_deleteAndSetWaypoints;
-	} forEach FRIENDLY_GROUPS; 
+// 	{
+// 		private _group = _x;
+// 		[_x, 50, _destination, false, false] call jMD_fnc_deleteAndSetWaypoints;
+// 	} forEach FRIENDLY_GROUPS; 
 
-	[group player, 50, _destination, false, false] call jMD_fnc_deleteAndSetWaypoints;
+// 	[group player, 50, _destination, false, false] call jMD_fnc_deleteAndSetWaypoints;
 
-// } forEach EAST_POSITIONS;
-} forEach _activePositions;
+// // } forEach EAST_POSITIONS;
+// } forEach _activePositions;
 
 
 private _aoMarker = createMarker[format['%1', _trigger], position _trigger];
@@ -80,11 +80,11 @@ private _sectorTriggerDeactivation = format [
 	["%2",  "SUCCEEDED"] call BIS_fnc_taskSetState; 
 	ON_MISSION = FALSE; ARRAY_OF_ROUTES deleteAt 0; 
 	private _loc = markerPos (ARRAY_OF_ROUTES select 0); 
-	{
-		private _group = _x;
-		[_x, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints;
-	} forEach FRIENDLY_GROUPS; 
-	[group player, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints; 
+	// {
+	// 	private _group = _x;
+	// 	[_x, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints;
+	// } forEach FRIENDLY_GROUPS; 
+	// [group player, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints; 
 	deletevehicle thisTrigger;', _aoMarker, _parentTaskId];
 _sectorTrigger setTriggerArea [_triggerAreaRadius,_triggerAreaRadius,0,true];
 _sectorTrigger setTriggerActivation ['EAST', 'PRESENT', true];

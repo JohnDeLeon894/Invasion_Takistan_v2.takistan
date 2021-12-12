@@ -16,7 +16,7 @@ if(_delete) then{
 private _wp = _group addWaypoint[_position, _radious];
 
 if(_setScript) then {
-	// [_group, (count waypoints _group) - 1 ]setWaypointScript "\z\lambs\addons\wp\scripts\fnc_wpGarrison.sqf";
+	[_group, (count waypoints _group) - 1 ]setWaypointScript "\z\lambs\addons\wp\scripts\fnc_wpGarrison.sqf";
 	_wp setWaypointBehaviour 'SAFE';
-	_wp setWaypointType 'DISMISS';
+	// _wp setWaypointType 'DISMISS';
 };
