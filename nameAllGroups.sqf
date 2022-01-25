@@ -1,6 +1,6 @@
 {
 	if (side _x == WEST) then {
-		[_x]execVM 'setGroupCallSign.sqf';
+		[_x] call jMD_fnc_setGroupCallSign;
 	};
 } forEach allGroups;
 

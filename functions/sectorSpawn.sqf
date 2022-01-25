@@ -7,8 +7,8 @@ private _nearbyLocations = _this select 2;
 private _usePosition = _this select 3;
 private _arearadious = _this select 4;
 private _parentTaskId = _this select 5;
-private _state = 'AUtoASSIGNED';
-private _owner = player;
+private _state = 'AUTOASSIGNED';
+private _owner = WEST;
 private _priority = -1;
 private _locationcount = count _nearbyLocations;
 private _resultsArray = [];
@@ -32,24 +32,29 @@ while {_spawnedcount < 6} do {
     _groupname = format ['enemygroup_%1', groupcount];
     _eastGroup = creategroup [east, false];
     _eastGroup setGroupId [_groupname];
-    _waypointScript = [
-        "\z\lambs\addons\wp\scripts\fnc_wpPatrol.sqf",
-        "\z\lambs\addons\wp\scripts\fnc_wpGarrison.sqf"
-    ] call BIS_fnc_selectRandom;
     
     if (_usePosition) then {
         _position = position _selectedLocation;
     } else {
         _position = locationposition _selectedLocation
     };
-    
-    hint format['groupname = %1 \n groupsize = %2 \n unitsArray = %3 \n position = %4', _groupname, _groupsize, RED_units_ARRAY, _position];
-    _eastGroup = [_eastGroup, _groupsize, RED_units_ARRAY, _position] call jMD_fnc_spawngroups;
+
+    _eastGroup = [_eastGroup, (_groupsize + random 4), RED_units_ARRAY, _position] call jMD_fnc_spawngroups;
     
     _wp = _eastGroup addWaypoint [_position, 200];
-    // [_groupname, (count waypoints _groupname) - 1 ] setwaypointScript _waypointScript;
     _wp setwaypointType 'DISMISS';
     _wp setwaypointBehaviour 'SAFE';
+        /*
+        0: Group performing action, either unit <OBJECT> or group <GROUP>
+        1: Position to occupy, default group location <ARRAY or OBJECT>
+        2: Range of tracking, default is 50 meters <NUMBER>
+        3: Area the AI Camps in, default [] <ARRAY>
+        4: Teleport Units to Position <BOOL>
+        5: Sort Based on Height <BOOL>
+        6: Exit Conditions that breaks a Unit free (-2 Random, -1 All, 0 None, 1 Hit, 2 Fired, 3 FiredNear, 4 Suppressed), default -2 <NUMBER>
+        7: Sub-group patrols the area <BOOL>
+    */
+    [_eastGroup, _position, 200, [], false,true,-1, true] call lambs_wp_fnc_taskGarrison;
     // creating diary record and task
     private ['_childTasIdk', '_description', '_completedChildren', '_activation', '_statement'];
     _childTasIdk = format['Patrol_%1', _selectedLocation];
@@ -59,10 +64,6 @@ while {_spawnedcount < 6} do {
     [_owner, [_childTasIdk, _parentTaskId], _description, _position, _state, _priority, _shownotification, _type, _visiblein3D] call BIS_fnc_taskCreate;
     [_eastGroup, _childTasIdk] execVM 'functions\groupTracker.sqf';
 
-    // _childTrigger = createTrigger['EmptyDetector', _position, true];
-    // _childTrigger settriggerArea[ 500, 500, 0, false];
-    // _childTrigger settriggerActivation['NONE', 'NONE', false];
-    // _childTrigger settriggerStatements _statement;
     private _diaryTitle = format['Trigger %1 created:', _trigger];
     player createDiaryRecord ['taskRecord', [_diaryTitle, format['this is the marker found: %1', _selectedLocation]]];
     player createDiaryRecord ['taskRecord',[_diaryTitle,format['This is the current group count: %1', ({alive _x} count units _eastGroup)]]];

@@ -27,7 +27,7 @@ private _replaceMarker = {
 };
 
 private _parseAmmoType = {
-
+	// private _mrkText = _this select 0;
 	if ('smoke' in _mrkText) then {_artyRounds ='6Rnd_155mm_Mo_smoke' };
 	if ('lg' in _mrkText) then {_artyRounds = '2Rnd_155mm_Mo_LG'};
 	if ('cluster' in _mrkText) then {_artyRounds = '2Rnd_155mm_Mo_Cluster'};
@@ -41,7 +41,7 @@ private _parseAmmoType = {
 	private _mrkText = markerText _x;
 	private _isArty = 'arty' in _mrkText;
 	if ((_x find "_USER_DEFINED") >= 0 && _isArty) then {
-		call _parseAmmoType;
+		_mrkText call _parseAmmoType;
 		private _roundsToFire = parseNumber _mrkText;
 		private _scopedMarker = _x;
 		player commandChat format['original name %1', _fireMissionName];

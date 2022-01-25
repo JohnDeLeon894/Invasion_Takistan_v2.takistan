@@ -34,6 +34,10 @@ class cfgFunctions{
       class choppaCheck {
         file = "functions\choppaCheck.sqf";
       };
+      class setGroupCallSign {
+        file = "functions\setGroupCallSign.sqf";
+        description = "[]call jMD_fnc_setGroupCallSign"
+      };
       class initFromLoad {
         preInit = 1;
         file = "functions\initFromLoad.sqf";

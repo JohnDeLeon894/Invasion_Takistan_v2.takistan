@@ -58,6 +58,19 @@ AMMO_ZONE = markerPos [ 'ammoTruckZone', true];
 TRANSPORT_ZONE = markerPos ['rtz', true];
 EAST_VEHICLE_SPAWN = markerPos ['eastVehicleSpawn', true];
 
+// all trigger
+ALL_TRIGGERS = [];
+{
+	private _trig = format ['%1',_x];
+	if ('sector' in _trig) then {
+		player createDiarySubject ['TriggersFound', 'Triggers Found'];
+		private _title = format ['Found %1', _trig];
+		private _entry = format ['Found trigger %1. Distance from player %2', _trig, player distance _x];
+		player createDiaryRecord ['TriggersFound', [_title, _entry]];
+		ALL_TRIGGERS pushBack _x;
+	};
+} forEach allMissionObjects 'EmptyDetector';
+
 // enemy markers 
 
 EAST_POSITIONS = [];
@@ -199,7 +212,7 @@ natoUnits = natoUnitsConfig apply {configName _x};
 
 
 // global variable for units array
-BLU_UNITS_ARRAY = natoDesertUnits;
+BLU_UNITS_ARRAY = bluforDesertUnits;
 
 RED_UNITS_ARRAY = Isis_units + BocoHaran_units + IslamicState_units;
 

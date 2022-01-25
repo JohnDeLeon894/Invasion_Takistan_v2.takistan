@@ -8,7 +8,6 @@ hint 'transport called';
 	private _tooFarFromLZ = _x distance TRANSPORT_ZONE > 100;
 	if(!(alive _x)) then {
 		hint 'transport not alive';
-		TRANSPORTS deleteAt (TRANSPORTS find _x);
 		continue;
 	};
 	if (_tooFarFromLZ) then { 

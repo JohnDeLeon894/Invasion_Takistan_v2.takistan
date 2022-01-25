@@ -1,7 +1,7 @@
 private _trigger = _this select 0;
 private _thisList = _this select 1;
 private _count = _this select 2; 
-private _owner = player;
+private _owner = WEST;
 private _parentTaskId = format['Clear %1', _trigger];
 private _description = [format['Enemies detected in %1', _trigger], format['Clear %1', _trigger], position _trigger];
 private _state = 'AUTOASSIGNED';
@@ -80,16 +80,13 @@ private _sectorTriggerDeactivation = format [
 	["%2",  "SUCCEEDED"] call BIS_fnc_taskSetState; 
 	ON_MISSION = FALSE; ARRAY_OF_ROUTES deleteAt 0; 
 	private _loc = markerPos (ARRAY_OF_ROUTES select 0); 
-	// {
-	// 	private _group = _x;
-	// 	[_x, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints;
-	// } forEach FRIENDLY_GROUPS; 
-	// [group player, 50, _loc, false, false] call jMD_fnc_deleteAndSetWaypoints; 
+	[thisTrigger]execVM "functions\findAndActivateNearestTrigger.sqf"; 
 	deletevehicle thisTrigger;', _aoMarker, _parentTaskId];
 _sectorTrigger setTriggerArea [_triggerAreaRadius,_triggerAreaRadius,0,true];
 _sectorTrigger setTriggerActivation ['EAST', 'PRESENT', true];
 _sectorTrigger setTriggerStatements ['this', _sectorTriggerActivation, _sectorTriggerDeactivation];
 
+deleteVehicle _trigger;
 /*
 Strategic
 StrongpointArea

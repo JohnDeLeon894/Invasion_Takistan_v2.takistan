@@ -15,9 +15,21 @@ if (!alive _CAS) then {
 group _CAS setBehaviour 'AWARE';
 private _CASAffirmMessage = format['%1 affirm, this is %2 responding to CAS mission for position %3', player, _CAS, _gridPos];
  player commandChat _CASAffirmMessage;
-_CAS move _casPos;
+// _CAS move _casPos;
+private _loiterType = ['CIRCLE', 'CIRCLE_L'] select floor random 1;
+private _vWp = group _CAS addWaypoint[position player, 50];
+_vWp setWaypointType 'LOITER';
+_vWp setWaypointLoiterType _loiterType;
+diag_log format['Loiter type selected %1', _loiterType];
+_vWp setWaypointLoiterRadius 800;
+_vWp setWaypointLoiterAltitude 600;
 
-sleep 300;
+hint 'wating ten minutes';
+sleep 600;
+
+{
+	deleteWaypoint _x;
+} forEach waypoints group _CAS;
 
 private _CASRTB = format['%1 this is %2, we are RTB to refule and rearm. Goodluck down there.', player, _CAS];
 player commandChat _CASRTB;

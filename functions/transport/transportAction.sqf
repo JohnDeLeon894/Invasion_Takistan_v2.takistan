@@ -29,10 +29,15 @@ waitUntil {unitReady _transport};
 if (unitReady _transport) then 
  { 
 	_transport land "GET IN"; // used only for helicopters
-	_transport sideChat "We're at the destination, exit when ready.";
+	waitUntil { isTouchingGround _transport };
+	if(_action == 'infil') then {
+		_transport sideChat "We're at the destination, exit when ready.";
+	} else {
+		_transport sideChat format['%1 at LZ, lets get the hello out of here!', _transport];
+	};
 };
 
 waitUntil{unitReady _transport};
 if (_action != 'reinforce') then {
-call compile format['[%2] execVM "functions\transport\transport_%1_action.sqf"', _action, _transport];
+	call compile format['[%2] execVM "functions\transport\transport_%1_action.sqf"', _action, _transport];
 };

@@ -4,8 +4,6 @@ private _moveGroupToMarkerPos = {
 	private _position = _this select 1;
 	private _marker = _this select 2;
 	private _mapGridPos = mapGridPosition _position;
-	private _missionName = [] call _reinforceMarkerName;
-	[_marker, _missionName] call _replaceMarker;
 
 	player sideChat format ['Troops in contact, repeat; Troops in contact. Map grid %1.', _mapGridPos];
 
@@ -18,11 +16,12 @@ private _moveGroupToMarkerPos = {
 	_group move _position;
 };
 
-private _reinforceMarkerName = {
+private _taskMarkerName = {
+	private _taskName = _this select 0;
 	private _verb = VERBS call BIS_fnc_selectRandom;
 	private _noun = NOUNS call BIS_fnc_selectRandom;
 	private _adjective = ADJECTIVES call BIS_fnc_selectRandom;
-	private _newName = format ['Reinforce mission %1 %2 %3', _verb, _adjective, _noun];
+	private _newName = format [' %1 %2-%3-%4', _taskName, _verb, _adjective, _noun];
 	_newName
 };
 
@@ -47,12 +46,24 @@ private _replaceMarker = {
 		private _mrkText = markerText _x;
 		private _position = markerPos _x;
 		private _marker = _x;
-
-		switch (_mrkText) do {
-			case "TIC": {
+		
+		switch (toLower(_mrkText)) do {
+			case "tic": {
 				{
 					[_x, _position, _marker] call _moveGroupToMarkerPos;
 				} forEach FRIENDLY_GROUPS;
+				private _missionName = [_mrkText] call _taskMarkerName;
+				[_marker, _missionName] call _replaceMarker;
+			 };
+			 case "reinforce": {
+				[_position, "reinforce"]execVM "functions\transport\callTransport.sqf";
+				private _missionName = [_mrkText] call _taskMarkerName;
+				[_marker, _missionName] call _replaceMarker;
+			 };
+			 case 'pickup' || 'exfil': {
+				[_position, "exfil"]execVM "functions\transport\callTransport.sqf";
+				private _missionName = [_mrkText] call _taskMarkerName;
+				[_marker, _missionName] call _replaceMarker;
 			 };
 			default { };
 		};

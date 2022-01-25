@@ -1,14 +1,7 @@
-private _choppas = TRANSPORTS; 
- 
-{ 
- 	private _choppa = _x; 
- 	private _canMove = canMove _choppa; 
- 	private _status =  ['The Choppa status',format['the Choppa"s status is %1', _canMove]]; 
- 	player createDiarySubject['choppaStatus', 'Chopper Status']; 
- 	player createDiaryRecord ['choppaStatus', _status]; 
-	diag_log format['the Choppa"s status is %1', _canMove];
- 
- if ( !(_canMove) ) then { 
+private _choppaCount = count TRANSPORTS;
+
+ private _choppaCheck = {
+		private _choppa = this select 0;
 		HINT format['Choppa %1 cant move', _choppa];
 		private _choppaName =  vehicleVarName _choppa;
 		private _hawkNumber = parseNumber (_choppaName splitString 'k' select 1) + 3;
@@ -29,7 +22,26 @@ private _choppas = TRANSPORTS;
 		_newName = _hawk;
 		diag_log ['is the Variable nil?', _newName];
 		diag_log ['variable name', vehicleVarName _hawk];
-		transports pushBack _hawk; 
+		TRANSPORTS pushBack _hawk; 
 		[_hawk]execVM 'functions\transport\transport_infil_action.sqf';
+};
+
+{ 
+ 	private _choppa = _x; 
+ 	private _canMove = canMove _choppa; 
+	private _choppaName =  vehicleVarName _choppa;
+ 	private _status =  ['The Choppa status',format['the Choppa"s status is %1', _canMove]]; 
+ 	player createDiarySubject['choppaStatus', 'Chopper Status']; 
+ 	player createDiaryRecord ['choppaStatus', _status]; 
+	diag_log format['the Choppa"s status is %1', _canMove];
+ 
+ if ( !(_canMove) ) then { 
+	 [_choppa] call _choppaCheck;
  }; 
-}  forEach _choppas;
+}  forEach TRANSPORTS;
+
+while {_choppaCount < 3} do {
+	private _randomNumber = random 100;
+	format ['foHawk%1', _randomNumber] call _choppaCheck;
+};
+
