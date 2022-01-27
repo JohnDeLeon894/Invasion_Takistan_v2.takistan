@@ -41,31 +41,60 @@ private _replaceMarker = {
 	deleteMarker _mark;
 };
 
+private _splitOnChoppa = {
+	private _string = _this select 0;
+
+	private _splitString = _string splitString '_';
+
+	_splitString
+};
+
+private _artyProcessor = {
+	private ['_artyData', '_numberOfRounds','_ammoType', '_position', '_missionName', '_hasAmmoType'];
+	_artyData = _this select 0;
+	_numberOfRounds = parseNumber (_artyData select 1);
+	_hasAmmoType = (! isNil { _artyData select 2 });
+	_ammoType =  ['default', _artyData select 2] select (! isNil { _artyData select 2 });
+	hint format['has ammo type? %1, _ammoType = %2, number of rounds %3', _hasAmmoType, _ammoType, _numberOfRounds];
+	_position = _this select 1;
+	_missionName = _this select 2;
+	[_numberOfRounds, ['default', _ammoType] select _hasAmmoType, _position, _missionName] call jMD_fnc_artilleryCall;
+};
+
 {
 	if ((_x find "_USER_DEFINED") >= 0) then {
-		private _mrkText = markerText _x;
+		private _mrkText = toLower(markerText _x);
 		private _position = markerPos _x;
 		private _marker = _x;
-		
-		switch (toLower(_mrkText)) do {
-			case "tic": {
-				{
-					[_x, _position, _marker] call _moveGroupToMarkerPos;
-				} forEach FRIENDLY_GROUPS;
-				private _missionName = [_mrkText] call _taskMarkerName;
-				[_marker, _missionName] call _replaceMarker;
-			 };
-			 case "reinforce": {
-				[_position, "reinforce"]execVM "functions\transport\callTransport.sqf";
-				private _missionName = [_mrkText] call _taskMarkerName;
-				[_marker, _missionName] call _replaceMarker;
-			 };
-			 case 'pickup' || 'exfil': {
-				[_position, "exfil"]execVM "functions\transport\callTransport.sqf";
-				private _missionName = [_mrkText] call _taskMarkerName;
-				[_marker, _missionName] call _replaceMarker;
-			 };
-			default { };
+		private _splitMarkerText = [_mrkText] call _splitOnChoppa;
+		hint format ['%1', _splitMarkerText];
+
+		if (_mrkText == 'tic') then {
+			{
+				[_x, _position, _marker] call _moveGroupToMarkerPos;
+			} forEach FRIENDLY_GROUPS;
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
+		if ((_mrkText == 'pickup') || (_mrkText == 'pickup')) then {
+			[_position, "exfil"] execVM "functions\transport\callTransport.sqf";
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
+		if (_mrkText == 'reinforce') then {
+			[_position, "reinforce"] execVM "functions\transport\callTransport.sqf";
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;			 
+			continue
+		}; 
+		if ('arty' in _mrkText) then {
+			private _splitMarkerText = [_mrkText] call _splitOnChoppa;
+			private _missionName = [_splitMarkerText select 0] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			[_splitMarkerText, _position, _missionName] call _artyProcessor;
+			continue
 		};
 	};
 } forEach allMapMarkers;

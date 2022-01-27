@@ -57,6 +57,7 @@ EAST_SPAWN = markerPos ["eastSpawn", true];
 AMMO_ZONE = markerPos [ 'ammoTruckZone', true];
 TRANSPORT_ZONE = markerPos ['rtz', true];
 EAST_VEHICLE_SPAWN = markerPos ['eastVehicleSpawn', true];
+CHOPPA_SPAWN = markerPos ['CHOPPA_SPAWN', true];
 
 // all trigger
 ALL_TRIGGERS = [];
@@ -88,9 +89,9 @@ while {_continue} do {
 };
 
 TRANSPORTS = [
-	Hawk1,
-	Hawk2,
-	Hawk3
+	Hawk_1,
+	Hawk_2,
+	Hawk_3
 ];
 
 CAS = [

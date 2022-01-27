@@ -1,17 +1,29 @@
 private _choppaCount = count TRANSPORTS;
 
  private _choppaCheck = {
-		private _choppa = this select 0;
-		HINT format['Choppa %1 cant move', _choppa];
-		private _choppaName =  vehicleVarName _choppa;
-		private _hawkNumber = parseNumber (_choppaName splitString 'k' select 1) + 3;
+		private ['_choppaName', '_choppa', '_liveChoppa', '_choppaType', '_splitChoppaName', '_choppaNumber', '_hawkNumber', '_newName', '_hawk', '_hawkGroup'];
+		_choppa = _this select 0;
+		_liveChoppa = _this select 1;
+		_choppaType = typeOf _choppa;
+
+		if (_liveChoppa) then {
+			// HINT format['Choppa %1 cant move', _choppa]; 
+			_choppaName =  vehicleVarName _choppa;
+			_choppa setDamage 1; 
+			TRANSPORTS deleteAt (TRANSPORTS find _choppa);
+		} else {
+			 _choppaName = _choppa;
+		};
+
+		_splitChoppaName = [_choppaName] call _splitOnChoppa;
+		HINT format ['%1', _splitChoppaName];
+		_choppaNumber = _splitChoppaName select 1;
+		_hawkNumber = (parseNumber _choppaNumber) + 3;
 		diag_log _hawkNumber;
-		private _newName = format['Hawk%1', _hawkNumber];
+		_newName = format['Hawk_%1', _hawkNumber];
 		diag_log _choppaName;
-		_choppa setDamage 1; 
-		TRANSPORTS deleteAt (TRANSPORTS find _x);
-		private _hawk = 'RHS_UH60M2_d' createVehicle markerPos 'CHOPPA_SPAWN';
-		private _hawkGroup = createVehicleCrew _hawk;
+		_hawk = _choppaType createVehicle CHOPPA_SPAWN;
+		_hawkGroup = createVehicleCrew _hawk;
 		diag_log _hawk;
 		_hawkGroup setVariable ['TCL_Disabled', true];
 		missionNamespace setVariable [_newName, _hawk];
@@ -26,6 +38,14 @@ private _choppaCount = count TRANSPORTS;
 		[_hawk]execVM 'functions\transport\transport_infil_action.sqf';
 };
 
+private _splitOnChoppa = {
+	private _string = _this select 0;
+
+	private _splitString = _string splitString '_';
+
+	_splitString
+};
+
 { 
  	private _choppa = _x; 
  	private _canMove = canMove _choppa; 
@@ -36,12 +56,14 @@ private _choppaCount = count TRANSPORTS;
 	diag_log format['the Choppa"s status is %1', _canMove];
  
  if ( !(_canMove) ) then { 
-	 [_choppa] call _choppaCheck;
+	 [_choppa, true] call _choppaCheck;
  }; 
 }  forEach TRANSPORTS;
 
 while {_choppaCount < 3} do {
-	private _randomNumber = random 100;
-	format ['foHawk%1', _randomNumber] call _choppaCheck;
+	private _randomNumber = floor random 100;
+	private _newChoppa = format ['foHawk_%1', _randomNumber];
+	[_newChoppa, false] call _choppaCheck;
+	_choppaCount = count TRANSPORTS;
 };
 

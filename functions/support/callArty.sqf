@@ -9,9 +9,10 @@ private _nameFireMission = {
 	private _verb = VERBS call BIS_fnc_selectRandom;
 	private _noun = NOUNS call BIS_fnc_selectRandom;
 	private _adjective = ADJECTIVES call BIS_fnc_selectRandom;
-	private _newName = format ['fire mission %1 %2 %3', _verb, _adjective, _noun];
+	private _newName = format ['fire mission %1-%2', _adjective, _noun];
 	_newName
 };
+
 private _replaceMarker = {
 	private _mark = _this select 0;
 	private _missionName = _this select 1;

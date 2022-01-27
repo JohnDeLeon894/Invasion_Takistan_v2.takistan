@@ -1057,7 +1057,7 @@ class Mission
 			class Attributes
 			{
 				init="call{[this]execVM ""functions\transport\transportAddAction.sqf"";}";
-				name="Hawk3";
+				name="Hawk_3";
 			};
 			id=556;
 			type="RHS_UH60M_d";
@@ -1076,7 +1076,7 @@ class Mission
 			class Attributes
 			{
 				init="call{[this]execVM ""functions\transport\transportAddAction.sqf"";}";
-				name="Hawk2";
+				name="Hawk_2";
 			};
 			id=564;
 			type="RHS_UH60M2_d";
@@ -1095,7 +1095,7 @@ class Mission
 			class Attributes
 			{
 				init="call{[this]execVM ""functions\transport\transportAddAction.sqf"";" \n "}";
-				name="Hawk1";
+				name="Hawk_1";
 			};
 			id=567;
 			type="RHS_UH60M_d";
