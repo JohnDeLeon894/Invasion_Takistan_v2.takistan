@@ -14,7 +14,7 @@ _transport setVariable ["onMission", true];
 // hint format ['transport %1',_transport];
 if (_action == 'reinforce') then {
 	reinforceReady = false; 
-	call compile format['[%1] execVM "functions\transport\transport_%2_action.sqf"', _transport, _action];
+	call compile format['[%1] execVM "functions\transport\transport_reinforce_action.sqf"', _transport];
 	_action = 'infil';
 	waitUntil {reinforceReady};	
 };

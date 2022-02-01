@@ -30,7 +30,7 @@ ONE_LOOP = true;
 
 {
 	// Current result is saved in variable _x
-	scopeName "unitSpawn";
+	scopeName 'unitSpawn';
 	private _groupSize = BLU_UNIT_SIZE; // desired size of each group
 	private _count = {alive _x}count units _x;
 	private _group = _x;
@@ -41,20 +41,30 @@ ONE_LOOP = true;
 		_timer = _timer + 1;
 		private _count = {alive _x}count units _group;
 		private _results =  [_group, (_groupSize - _count), BLU_UNITS_ARRAY, WEST_SPAWN] call  jMD_fnc_spawnGroups;
-		if (_timer > 255) then { breakTo "unitSpawn"};
+		if (_timer > 255) then { breakTo 'unitSpawn'};
 	};
 	if (doOnce < count FRIENDLY_GROUPS) then {
-		_x setBehaviour "SAFE";
+		_x setBehaviour 'SAFE';
 		FRIENDLY_GROUPS deleteAt(FRIENDLY_GROUPS find group player);
 		doOnce = doOnce +1;
 	};
+	// lambs_danger_OnInformationShared	_unit <Object>, _groupOfUnit <Group>, _target <Object>, _groups <Array<Groups>>
+	[_x, 'lambs_danger_OnInformationShared', {
+    params ['_unit', '_group', '_target', '_groups'];
+    private ['_targetPos', '_targetGrid', '_message'];
+		hint 'eventhandler fired!';
+		_targetPos = position _target;
+		_targetGrid = mapGridPosition _targetPos;
+		_message = format ['I see the enemy at %1', _targetGrid];
+		_units sideChat _message;
+	}] call BIS_fnc_addScriptedEventHandler;
 } forEach FRIENDLY_GROUPS;
 
 _vehicleType = RED_VEHICLE_ARRAY call BIS_fnc_selectRandom;
 _veh = [ EAST_VEHICLE_SPAWN, 330, _vehicleType, east] call BIS_fnc_spawnVehicle;
 hint format['Created vehicle %1', _veh select 0];
 _vehGroup = _veh select 2;
-_vehGroup setBehaviour "SAFE";
+_vehGroup setBehaviour 'SAFE';
 private _vWp = _vehGroup addWaypoint[position player, 50];
 _vWp waypointAttachVehicle vehicle player;
 

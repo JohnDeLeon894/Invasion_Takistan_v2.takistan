@@ -36,11 +36,11 @@ class cfgFunctions{
       };
       class setGroupCallSign {
         file = "functions\setGroupCallSign.sqf";
-        description = "[]call jMD_fnc_setGroupCallSign"
+        description = "[]call jMD_fnc_setGroupCallSign";
       };
       class artilleryCall {
         file = "functions\support\artilleryCall.sqf";
-        description = "[]call jMD_fnc_artilleryCall"
+        description = "[]call jMD_fnc_artilleryCall";
       };
       class initFromLoad {
         preInit = 1;

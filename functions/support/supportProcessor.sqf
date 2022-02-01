@@ -1,3 +1,6 @@
+// only gets human players
+private _headlessClients = entities 'HeadlessClient_F';
+private _humanPlayers = allPlayers - _headlessClients;
 
 private _moveGroupToMarkerPos = {
 	private _group = _this select 0;
@@ -12,7 +15,7 @@ private _moveGroupToMarkerPos = {
 	(units _group select 0) sideChat format ['request recieved, %1 moving to %2', _group, _mapGridPos];
 
 	
-	_group setBehaviour "aware";
+	_group setBehaviour 'aware';
 	_group move _position;
 };
 
@@ -31,10 +34,10 @@ private _replaceMarker = {
 	private _missionName = _this select 1;
 	private _pos = markerPos _mark;
 
-	m1 globalChat "replacing marker";
+	m1 globalChat 'replacing marker';
 	// private _fireMissionName = [] call _nameFireMission;
 	private _artyMarker = createMarker [_missionName, _pos];
-	_artyMarker setMarkerType "mil_warning_noShadow";
+	_artyMarker setMarkerType 'mil_warning_noShadow';
 	_artyMarker setMarkerText _missionName;
 	_artyMarker setMarkerColor 'ColorRed';
 	format['original name %1', _missionName];
@@ -44,7 +47,7 @@ private _replaceMarker = {
 private _splitOnChoppa = {
 	private _string = _this select 0;
 
-	private _splitString = _string splitString '_';
+	private _splitString = _string splitString '_- ';
 
 	_splitString
 };
@@ -62,33 +65,21 @@ private _artyProcessor = {
 };
 
 {
-	if ((_x find "_USER_DEFINED") >= 0) then {
+	if ((_x find '_USER_DEFINED') >= 0) then {
 		private _mrkText = toLower(markerText _x);
 		private _position = markerPos _x;
 		private _marker = _x;
 		private _splitMarkerText = [_mrkText] call _splitOnChoppa;
 		hint format ['%1', _splitMarkerText];
 
-		if (_mrkText == 'tic') then {
-			{
-				[_x, _position, _marker] call _moveGroupToMarkerPos;
-			} forEach FRIENDLY_GROUPS;
-			private _missionName = [_mrkText] call _taskMarkerName;
-			[_marker, _missionName] call _replaceMarker;
-			continue
-		}; 
-		if ((_mrkText == 'pickup') || (_mrkText == 'pickup')) then {
-			[_position, "exfil"] execVM "functions\transport\callTransport.sqf";
-			private _missionName = [_mrkText] call _taskMarkerName;
-			[_marker, _missionName] call _replaceMarker;
-			continue
-		}; 
-		if (_mrkText == 'reinforce') then {
-			[_position, "reinforce"] execVM "functions\transport\callTransport.sqf";
-			private _missionName = [_mrkText] call _taskMarkerName;
-			[_marker, _missionName] call _replaceMarker;			 
-			continue
-		}; 
+		private _theCaller = _marker;
+		_theCaller = (_theCaller splitString '#/,_USER_DEFINED ') select 0;
+		private _stringToPrint = format['*** *** *** support caller is %1 *** *** ***', _theCaller];
+		diag_log _stringToPrint;
+		private _userId = getPlayerUID player;
+		private _stringToPrint = format['*** *** *** support caller is %1 *** *** ***', _userId];
+		diag_log _userId;
+
 		if ('arty' in _mrkText) then {
 			private _splitMarkerText = [_mrkText] call _splitOnChoppa;
 			private _missionName = [_splitMarkerText select 0] call _taskMarkerName;
@@ -96,5 +87,49 @@ private _artyProcessor = {
 			[_splitMarkerText, _position, _missionName] call _artyProcessor;
 			continue
 		};
+		if (_mrkText == 'reinforce') then {
+			[_position, 'reinforce'] execVM 'functions\transport\callTransport.sqf';
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;			 
+			continue
+		}; 
+		if (_mrkText == 'tic') then {
+			{
+				// [_x, _position, _marker] call _moveGroupToMarkerPos;
+				/*
+				0: Unit fleeing <OBJECT>
+				1: Destination <ARRAY>
+				2: Forced retreat, default false <BOOL>
+				3: Distance threshold, default 10 <NUMBER>
+				4: Update cycle, default 2 <NUMBER>
+				5: Is Called for Waypoint, default false <BOOLEAN>
+
+				[bob, getPos angryJoe] spawn lambs_wp_fnc_taskAssault;
+				*/
+				[_x, _position, false, 100, 4, false] spawn lambs_wp_fnc_taskAssault;
+			} forEach FRIENDLY_GROUPS;
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
+		if ((_mrkText == 'pickup') || (_mrkText == 'pickup')) then {
+			[_position, 'exfil'] execVM 'functions\transport\callTransport.sqf';
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
+		if (_mrkText == 'infil') then {
+			[_position, 'exinfilfil'] execVM 'functions\transport\callTransport.sqf';
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
+// []execVM 'functions\CAS\callCAS.sqf';
+		if (_mrkText == 'cas') then {
+			[_position, 'exinfilfil'] execVM 'functions\transport\callTransport.sqf';
+			private _missionName = [_mrkText] call _taskMarkerName;
+			[_marker, _missionName] call _replaceMarker;
+			continue
+		}; 
 	};
 } forEach allMapMarkers;

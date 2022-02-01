@@ -20,14 +20,14 @@ private _spawnedcount = 0;
 private _tries = 0;
 
 while {_spawnedcount < 6} do {
-    private ['_position', '_groupname', '_waypointScript', '_wp', '_selectedLocation', '_eastGroup'];
+    private ['_position', '_groupname', '_waypointScript', '_wp', '_selectedLocation', '_eastGroup', '_westGroup'];
     
     _selectedLocation = _nearbyLocations call BIS_fnc_selectRandom;
     _nearbyLocations deleteAt (_nearbyLocations find _selectedLocation);
     _resultsArray pushBack _selectedLocation;
+    _westGroup = FRIENDLY_GROUPS select _spawnedcount;
     
     groupcount = groupcount + 1;
-    _spawnedcount = _spawnedcount + 1;
     
     _groupname = format ['enemygroup_%1', groupcount];
     _eastGroup = creategroup [east, false];
@@ -42,7 +42,6 @@ while {_spawnedcount < 6} do {
     _eastGroup = [_eastGroup, (_groupsize + random 4), RED_units_ARRAY, _position] call jMD_fnc_spawngroups;
     
     _wp = _eastGroup addWaypoint [_position, 200];
-    _wp setwaypointType 'DISMISS';
     _wp setwaypointBehaviour 'SAFE';
         /*
         0: Group performing action, either unit <OBJECT> or group <GROUP>
@@ -60,6 +59,19 @@ while {_spawnedcount < 6} do {
     _childTasIdk = format['Patrol_%1', _selectedLocation];
     _description = [format['Enemy soldiers were spotted near %1. Patrol the area and engage any units you come across.', _selectedLocation], format['Patrol %1', _selectedLocation], _selectedLocation];
     _activation = format['["%1", "SUCCEEDED"] call BIS_fnc_tasksetState;', _childTasIdk];
+ 
+    /*
+    0: Group performing action, either unit <OBJECT> or group <GROUP>
+    1: Position being searched, default group position <OBJECT or ARRAY>
+    2: Range of tracking, default is 200 meters <NUMBER>
+    3: Waypoint Count, default 4 <NUMBER>
+    4: Area the AI Camps in, default [] <ARRAY> 5: Dynamic patrol pattern, default false <BOOL>
+
+    [bob, bob, 500] call lambs_wp_fnc_taskPatrol;
+    */
+    if (! (isNil '_westGroup')) then {
+        [_westGroup, _position, 300] call lambs_wp_fnc_taskPatrol;  
+    };
     
     [_owner, [_childTasIdk, _parentTaskId], _description, _position, _state, _priority, _shownotification, _type, _visiblein3D] call BIS_fnc_taskCreate;
     [_eastGroup, _childTasIdk] execVM 'functions\groupTracker.sqf';
@@ -69,6 +81,9 @@ while {_spawnedcount < 6} do {
     player createDiaryRecord ['taskRecord',[_diaryTitle,format['This is the current group count: %1', ({alive _x} count units _eastGroup)]]];
     player createDiaryRecord ['taskRecord',[_diaryTitle,format['This is the current group name: %1', _groupname]]];
     player createDiaryRecord ['taskRecord',[_diaryTitle,format['This is the current group id: %1', groupId _eastGroup]]];
+
+    
+    _spawnedcount = _spawnedcount + 1;
 };
 
 _resultsArray

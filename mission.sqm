@@ -149,7 +149,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=75;
+		items=71;
 		class Item0
 		{
 			dataType="Group";
@@ -273,43 +273,7 @@ class Mission
 		class Item5
 		{
 			dataType="Trigger";
-			position[]={8052.4307,295.84952,2060.1211};
-			class Attributes
-			{
-				text="call Reinforcements";
-				condition="call{zoneClear}";
-				onActivation="call{onMapSingleClick '[_pos, ""reinforce""]execVM ""functions\transport\callTransport.sqf""; onMapSingleClick """"; hint""map clicked""; true;';}";
-				sizeA=0;
-				sizeB=0;
-				repeatable=1;
-				activationBy="BRAVO";
-			};
-			id=91;
-			type="EmptyDetector";
-		};
-		class Item6
-		{
-			dataType="Trigger";
-			position[]={8050.9224,295.17575,2073.207};
-			class Attributes
-			{
-				text="call arty";
-				condition="call{this}";
-				onActivation="call{[]execVM ""functions\support\callArty.sqf"";" \n "}";
-				sizeA=0;
-				sizeB=0;
-				timeout[]={1,2,3};
-				repeatable=1;
-				activationBy="ALPHA";
-				effectSound="rhs_usa_land_rc_4";
-			};
-			id=96;
-			type="EmptyDetector";
-		};
-		class Item7
-		{
-			dataType="Trigger";
-			position[]={8112.4868,296.04001,1961.6455};
+			position[]={8007.3672,293.91272,2069.0818};
 			class Attributes
 			{
 				text="Remove Unit";
@@ -323,7 +287,7 @@ class Mission
 			id=106;
 			type="EmptyDetector";
 		};
-		class Item8
+		class Item6
 		{
 			dataType="Group";
 			side="West";
@@ -429,7 +393,7 @@ class Mission
 			id=131;
 			atlOffset=-0.071807861;
 		};
-		class Item9
+		class Item7
 		{
 			dataType="Object";
 			class PositionInfo
@@ -472,7 +436,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item10
+		class Item8
 		{
 			dataType="Marker";
 			position[]={8216.9551,296.04001,2115.1084};
@@ -480,7 +444,7 @@ class Mission
 			type="Empty";
 			id=135;
 		};
-		class Item11
+		class Item9
 		{
 			dataType="Trigger";
 			position[]={8052.3027,296.04001,2048.3711};
@@ -497,7 +461,7 @@ class Mission
 			id=136;
 			type="EmptyDetector";
 		};
-		class Item12
+		class Item10
 		{
 			dataType="Marker";
 			position[]={5960.6089,83.040001,11440.493};
@@ -505,7 +469,7 @@ class Mission
 			type="Empty";
 			id=137;
 		};
-		class Item13
+		class Item11
 		{
 			dataType="Trigger";
 			position[]={8056.3169,296.04001,2031.71};
@@ -523,10 +487,10 @@ class Mission
 			id=142;
 			type="EmptyDetector";
 		};
-		class Item14
+		class Item12
 		{
 			dataType="Trigger";
-			position[]={8415.3643,393.89862,2813.313};
+			position[]={8393.8789,390.48886,2810.3843};
 			class Attributes
 			{
 				name="sector_8";
@@ -540,13 +504,14 @@ class Mission
 			id=190;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item15
+		class Item13
 		{
 			dataType="Logic";
 			class PositionInfo
 			{
 				position[]={8216.9629,296.04001,1981.9351};
 			};
+			presenceCondition="false";
 			id=475;
 			type="ModuleTimeMultiplier_F";
 			class CustomAttributes
@@ -573,7 +538,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item16
+		class Item14
 		{
 			dataType="Group";
 			side="West";
@@ -709,7 +674,7 @@ class Mission
 			id=532;
 			atlOffset=-0.081390381;
 		};
-		class Item17
+		class Item15
 		{
 			dataType="Group";
 			side="West";
@@ -787,7 +752,7 @@ class Mission
 			id=538;
 			atlOffset=-0.014343262;
 		};
-		class Item18
+		class Item16
 		{
 			dataType="Group";
 			side="West";
@@ -920,7 +885,7 @@ class Mission
 			id=542;
 			atlOffset=-0.058227539;
 		};
-		class Item19
+		class Item17
 		{
 			dataType="Group";
 			side="West";
@@ -1023,7 +988,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item20
+		class Item18
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1044,7 +1009,7 @@ class Mission
 			type="RHS_AH64D_wd";
 			atlOffset=-0.13717651;
 		};
-		class Item21
+		class Item19
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1063,7 +1028,7 @@ class Mission
 			type="RHS_UH60M_d";
 			atlOffset=-0.081390381;
 		};
-		class Item22
+		class Item20
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1082,7 +1047,7 @@ class Mission
 			type="RHS_UH60M2_d";
 			atlOffset=-0.014343262;
 		};
-		class Item23
+		class Item21
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1101,7 +1066,7 @@ class Mission
 			type="RHS_UH60M_d";
 			atlOffset=-0.058227539;
 		};
-		class Item24
+		class Item22
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1116,7 +1081,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item25
+		class Item23
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1131,7 +1096,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item26
+		class Item24
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1146,7 +1111,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item27
+		class Item25
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1161,7 +1126,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item28
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1176,7 +1141,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item29
+		class Item27
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1191,7 +1156,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item30
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1206,7 +1171,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item31
+		class Item29
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1221,7 +1186,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item32
+		class Item30
 		{
 			dataType="Trigger";
 			position[]={8405.7637,307.63037,2434.1521};
@@ -1238,7 +1203,7 @@ class Mission
 			type="EmptyDetectorAreaR250";
 			atlOffset=-3.0517578e-005;
 		};
-		class Item33
+		class Item31
 		{
 			dataType="Group";
 			side="East";
@@ -1278,10 +1243,10 @@ class Mission
 			};
 			id=581;
 		};
-		class Item34
+		class Item32
 		{
 			dataType="Marker";
-			position[]={8412.4219,360.9917,2810.178};
+			position[]={8394.3496,360.9917,2813.1902};
 			name="hqZone";
 			markerType="RECTANGLE";
 			type="rectangle";
@@ -1291,9 +1256,9 @@ class Mission
 			a=1000;
 			b=1000;
 			id=583;
-			atlOffset=-31.887695;
+			atlOffset=-29.930267;
 		};
-		class Item35
+		class Item33
 		{
 			dataType="Group";
 			side="West";
@@ -1435,7 +1400,7 @@ class Mission
 			};
 			id=584;
 		};
-		class Item36
+		class Item34
 		{
 			dataType="Group";
 			side="West";
@@ -1577,7 +1542,7 @@ class Mission
 			};
 			id=593;
 		};
-		class Item37
+		class Item35
 		{
 			dataType="Group";
 			side="West";
@@ -1718,7 +1683,7 @@ class Mission
 			};
 			id=602;
 		};
-		class Item38
+		class Item36
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1734,43 +1699,7 @@ class Mission
 			id=603;
 			type="rhsusf_m1025_d_s_m2";
 		};
-		class Item39
-		{
-			dataType="Trigger";
-			position[]={8070.5361,296.04001,2001.83};
-			class Attributes
-			{
-				name="callTransport";
-				text="call Transport";
-				condition="call{zoneClear}";
-				onActivation="call{onMapSingleClick '" \n "[_pos, ""infil""]execVM ""functions\transport\callTransport.sqf"";" \n "onMapSingleClick """";';" \n "}";
-				sizeA=0;
-				sizeB=0;
-				repeatable=1;
-				activationBy="FOXTROT";
-			};
-			id=635;
-			type="EmptyDetector";
-		};
-		class Item40
-		{
-			dataType="Trigger";
-			position[]={8063.0288,296.04001,2019.0537};
-			class Attributes
-			{
-				name="Exfiltrate";
-				text="Call for exfiltration";
-				condition="call{zoneClear}";
-				onActivation="call{onMapSingleClick '" \n "[_pos, ""exfil""] execVM ""functions\transport\callTransport.sqf"";" \n "onMapSingleClick """";';" \n "}";
-				sizeA=0;
-				sizeB=0;
-				repeatable=1;
-				activationBy="ECHO";
-			};
-			id=636;
-			type="EmptyDetector";
-		};
-		class Item41
+		class Item37
 		{
 			dataType="Group";
 			side="West";
@@ -1875,7 +1804,7 @@ class Mission
 			id=647;
 			atlOffset=0.034576416;
 		};
-		class Item42
+		class Item38
 		{
 			dataType="Group";
 			side="West";
@@ -1983,7 +1912,7 @@ class Mission
 			id=651;
 			atlOffset=-0.037994385;
 		};
-		class Item43
+		class Item39
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2001,7 +1930,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=-0.037994385;
 		};
-		class Item44
+		class Item40
 		{
 			dataType="Group";
 			side="West";
@@ -2106,7 +2035,7 @@ class Mission
 			id=656;
 			atlOffset=0.10134888;
 		};
-		class Item45
+		class Item41
 		{
 			dataType="Group";
 			side="West";
@@ -2214,7 +2143,7 @@ class Mission
 			id=660;
 			atlOffset=-0.32788086;
 		};
-		class Item46
+		class Item42
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2232,7 +2161,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=-0.32788086;
 		};
-		class Item47
+		class Item43
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2250,7 +2179,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=0.034576416;
 		};
-		class Item48
+		class Item44
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2268,7 +2197,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=0.10134888;
 		};
-		class Item49
+		class Item45
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2284,7 +2213,7 @@ class Mission
 			type="Land_HelipadEmpty_F";
 			atlOffset=6.1035156e-005;
 		};
-		class Item50
+		class Item46
 		{
 			dataType="Marker";
 			position[]={4872.8413,350.27957,-3326.2944};
@@ -2293,7 +2222,7 @@ class Mission
 			id=685;
 			atlOffset=-29.420715;
 		};
-		class Item51
+		class Item47
 		{
 			dataType="Trigger";
 			position[]={5501.6992,369.08945,1491.2957};
@@ -2310,7 +2239,7 @@ class Mission
 			id=687;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item52
+		class Item48
 		{
 			dataType="Trigger";
 			position[]={10999.11,403.97717,2484.6108};
@@ -2327,7 +2256,7 @@ class Mission
 			id=688;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item53
+		class Item49
 		{
 			dataType="Trigger";
 			position[]={6292.1147,60.238701,11226.256};
@@ -2344,7 +2273,7 @@ class Mission
 			id=718;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item54
+		class Item50
 		{
 			dataType="Trigger";
 			position[]={8095.0498,306.34036,2280.8364};
@@ -2356,7 +2285,7 @@ class Mission
 			id=774;
 			type="EmptyDetector";
 		};
-		class Item55
+		class Item51
 		{
 			dataType="Trigger";
 			position[]={7807.8262,292.24518,1979.5051};
@@ -2369,23 +2298,24 @@ class Mission
 			id=776;
 			type="EmptyDetector";
 		};
-		class Item56
+		class Item52
 		{
 			dataType="Trigger";
 			position[]={8082.8999,296.04001,1994.766};
 			class Attributes
 			{
+				name="SUPPORT_CALL";
 				text="Support call";
-				onActivation="[] execVM 'functions\support\supportProcessor.sqf'";
+				onActivation="thisTrigger execVM 'functions\support\supportProcessor.sqf'";
 				sizeA=0;
 				sizeB=0;
 				repeatable=1;
-				activationBy="GOLF";
+				activationBy="ALPHA";
 			};
 			id=777;
 			type="EmptyDetector";
 		};
-		class Item57
+		class Item53
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2403,7 +2333,7 @@ class Mission
 			id=781;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item58
+		class Item54
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2421,7 +2351,7 @@ class Mission
 			id=782;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item59
+		class Item55
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2439,7 +2369,7 @@ class Mission
 			id=783;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item60
+		class Item56
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2457,7 +2387,7 @@ class Mission
 			id=784;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item61
+		class Item57
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2475,7 +2405,7 @@ class Mission
 			id=785;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item62
+		class Item58
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2493,7 +2423,7 @@ class Mission
 			id=786;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item63
+		class Item59
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2511,7 +2441,7 @@ class Mission
 			id=787;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item64
+		class Item60
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2529,7 +2459,7 @@ class Mission
 			id=788;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item65
+		class Item61
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2547,7 +2477,7 @@ class Mission
 			id=789;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item66
+		class Item62
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2565,7 +2495,7 @@ class Mission
 			id=790;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item67
+		class Item63
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2583,7 +2513,7 @@ class Mission
 			id=791;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item68
+		class Item64
 		{
 			dataType="Trigger";
 			position[]={2503.0696,304.63141,5509.8062};
@@ -2600,7 +2530,7 @@ class Mission
 			id=792;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item69
+		class Item65
 		{
 			dataType="Trigger";
 			position[]={6493.2847,341.60587,5559.8091};
@@ -2617,7 +2547,7 @@ class Mission
 			id=793;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item70
+		class Item66
 		{
 			dataType="Trigger";
 			position[]={10433.5,522.74664,5539.8076};
@@ -2635,7 +2565,7 @@ class Mission
 			type="EmptyDetectorAreaR250";
 			atlOffset=-25.070557;
 		};
-		class Item71
+		class Item67
 		{
 			dataType="Trigger";
 			position[]={2503.0667,244.88098,9480.0205};
@@ -2652,7 +2582,7 @@ class Mission
 			id=795;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item72
+		class Item68
 		{
 			dataType="Trigger";
 			position[]={6483.2822,130.07832,9490.0195};
@@ -2669,7 +2599,7 @@ class Mission
 			id=796;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item73
+		class Item69
 		{
 			dataType="Trigger";
 			position[]={10423.496,195.75317,9520.0225};
@@ -2686,7 +2616,7 @@ class Mission
 			id=797;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item74
+		class Item70
 		{
 			dataType="Trigger";
 			position[]={1526.2854,499.88818,1508.9431};
