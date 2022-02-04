@@ -48,15 +48,11 @@ ONE_LOOP = true;
 		FRIENDLY_GROUPS deleteAt(FRIENDLY_GROUPS find group player);
 		doOnce = doOnce +1;
 	};
-	// lambs_danger_OnInformationShared	_unit <Object>, _groupOfUnit <Group>, _target <Object>, _groups <Array<Groups>>
+
 	[_x, 'lambs_danger_OnInformationShared', {
     params ['_unit', '_group', '_target', '_groups'];
-    private ['_targetPos', '_targetGrid', '_message'];
 		hint 'eventhandler fired!';
-		_targetPos = position _target;
-		_targetGrid = mapGridPosition _targetPos;
-		_message = format ['I see the enemy at %1', _targetGrid];
-		_units sideChat _message;
+		[_unit, _group, _target, _groups] execVM 'functions\enemySpottedCallOut.sqf';
 	}] call BIS_fnc_addScriptedEventHandler;
 } forEach FRIENDLY_GROUPS;
 

@@ -14,8 +14,6 @@ private _locationcount = count _nearbyLocations;
 private _resultsArray = [];
 hint format ['trigger: %1', _trigger];
 
-// private _markers = east_positionS select {(getmarkerPos _x) inArea _trigger};
-// hint format _markers;
 private _spawnedcount = 0;
 private _tries = 0;
 
@@ -27,9 +25,9 @@ while {_spawnedcount < 6} do {
     _resultsArray pushBack _selectedLocation;
     _westGroup = FRIENDLY_GROUPS select _spawnedcount;
     
-    groupcount = groupcount + 1;
+    GROUP_COUNT = GROUP_COUNT + 1;
     
-    _groupname = format ['enemygroup_%1', groupcount];
+    _groupname = format ['enemygroup_%1', GROUP_COUNT];
     _eastGroup = creategroup [east, false];
     _eastGroup setGroupId [_groupname];
     
@@ -70,6 +68,7 @@ while {_spawnedcount < 6} do {
     [bob, bob, 500] call lambs_wp_fnc_taskPatrol;
     */
     if (! (isNil '_westGroup')) then {
+        hint format['found group %1', _westGroup];
         [_westGroup, _position, 300] call lambs_wp_fnc_taskPatrol;  
     };
     

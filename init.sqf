@@ -5,6 +5,7 @@ waitUntil {COMMON_DONE};
 [] spawn jMD_fnc_spawnLoop;
 // private _groupsNamed = false;
 _groupsNamed = [] execVM 'nameAllGroups.sqf';
+TCL_Initialize = True; 
 [300, false, 6] execFSM 'DCO_Fsm.fsm';
 sleep 5;
 ['intro', true] call BIS_fnc_blackIn;

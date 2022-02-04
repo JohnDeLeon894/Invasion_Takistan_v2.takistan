@@ -42,7 +42,7 @@ ARTY = [
 ];
 
 // variable for counting stuff
-groupCount = 0;
+GROUP_COUNT = 0;
 continueLoop = true;
 doOnce = 0;
 ONE_LOOP = false;
@@ -72,22 +72,6 @@ ALL_TRIGGERS = [];
 	};
 } forEach allMissionObjects 'EmptyDetector';
 
-// enemy markers 
-
-EAST_POSITIONS = [];
-
-private _i = 0;
-private _continue = true; 
-while {_continue} do {
-	_i = _i+1;
-	private _locName = format ['loc_%1', _i];
-	if(_locName in allMapMarkers) then {
-		EAST_POSITIONS pushBack _locName;
-	}else{
-		_continue = false;
-	} ;
-};
-
 TRANSPORTS = [
 	Hawk_1,
 	Hawk_2,
@@ -104,47 +88,6 @@ ROUT_ONE = [];
 ROUT_TWO = [];
 ROUT_THREE = [];
 
-// find rout one markers 
-	 private _i = 0;
-	 _continue = true; 
-while {_continue} do {
-	_i = _i+1;
-	private _locName = format ['rtOne_%1', _i];
-	if(_locName in allMapMarkers) then {
-		ROUT_ONE pushBack _locName;
-	}else{
-		_continue = false;
-	} ;
-};
-
-// find rout two markers 
-	 private _i = 0;
-	 _continue = true; 
-while {_continue} do {
-	_i = _i+1;
-	private _locName = format ['rtTwo_%1', _i];
-	if(_locName in allMapMarkers) then {
-		ROUT_TWO pushBack _locName;
-	}else{
-		_continue = false;
-	} ;
-};
-
-// find rout three markers 
-	 private _i = 0;
-	 _continue = true; 
-while {_continue} do {
-	_i = _i+1;
-	private _locName = format ['rtThree_%1', _i];
-	if(_locName in allMapMarkers) then {
-		ROUT_THREE pushBack _locName;
-	}else{
-		_continue = false;
-	} ;
-};
-
-ARRAY_OF_ROUTES = [ROUT_ONE, ROUT_TWO, ROUT_THREE] call BIS_fnc_selectRandom;
-
 LOCATION_TYPES = [
     'Airport',
     'Area',
@@ -158,10 +101,8 @@ LOCATION_TYPES = [
     'FlatAreaCity',
     'FlatAreaCitySmall',
     'HistoricalSite',
-    'Name',
     'NameCity',
     'NameCityCapital',
-    'NameLocal',
     'NameMarine',
     'NameVillage',
     'SafetyZone',
@@ -198,15 +139,18 @@ MACVUnitsConfig= "getText (_x >> 'faction') == 'B_MACV' && getText (_x >> 'simul
 MACVUnits = MACVUnitsConfig apply {configName _x};
 
 // desert camo friendly soldiers
-bluforDesertUnitsConfig= "getText (_x >> 'faction') == 'rhs_faction_usmc_d' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman' &&
-  getText (_x >> 'uniformClass') == 'rhs_uniform_FROG01_d'" configClasses (configFile >> "CfgVehicles");
+bluforDesertUnitsConfig= "
+	getText (_x >> 'faction') == 'rhs_faction_usmc_d' && 
+	getText (_x >> 'simulation') == 'soldier' && 
+	getText (_x >> 'role') != 'Crewman'"
+	 configClasses (configFile >> "CfgVehicles");
 bluforDesertUnits = bluforDesertUnitsConfig apply {configName _x};
 
 // desert camo nato soldiers
 natoDesertUnitsConfig= "getText (_x >> 'faction') == 'BLU_NATO_lxWS' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
 natoDesertUnits = natoDesertUnitsConfig apply {configName _x};
 
-natoUnitsConfig= "getText (_x >> 'faction') == 'BLU_F' && getText (_x >> 'simulation') == 'soldier'  && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
+natoUnitsConfig= "getText (_x >> 'faction') == 'BLU_F' && getText (_x >> 'simulation') == 'soldier' && getText (_x >> 'role') != 'Crewman'" configClasses (configFile >> "CfgVehicles");
 natoUnits = natoUnitsConfig apply {configName _x};
 
 
