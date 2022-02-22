@@ -8,7 +8,7 @@ class EditorData
 	toggles=513;
 	class ItemIDProvider
 	{
-		nextID=799;
+		nextID=827;
 	};
 	class MarkerIDProvider
 	{
@@ -36,7 +36,6 @@ addons[]=
 	"rhsusf_vehicles",
 	"A3_Characters_F",
 	"A3_Armor_F_Gamma_MBT_01",
-	"ace_realisticnames",
 	"A3_Structures_F_Mil_Helipads"
 };
 class AddonsMetaData
@@ -149,7 +148,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=71;
+		items=89;
 		class Item0
 		{
 			dataType="Group";
@@ -489,23 +488,6 @@ class Mission
 		};
 		class Item12
 		{
-			dataType="Trigger";
-			position[]={8393.8789,390.48886,2810.3843};
-			class Attributes
-			{
-				name="sector_8";
-				condition="true";
-				onActivation="call{private _numberToSpawn = ((random 4) + 4); ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=1000;
-				sizeB=1000;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=190;
-			type="EmptyDetectorAreaR250";
-		};
-		class Item13
-		{
 			dataType="Logic";
 			class PositionInfo
 			{
@@ -538,7 +520,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item14
+		class Item13
 		{
 			dataType="Group";
 			side="West";
@@ -674,7 +656,7 @@ class Mission
 			id=532;
 			atlOffset=-0.081390381;
 		};
-		class Item15
+		class Item14
 		{
 			dataType="Group";
 			side="West";
@@ -752,7 +734,7 @@ class Mission
 			id=538;
 			atlOffset=-0.014343262;
 		};
-		class Item16
+		class Item15
 		{
 			dataType="Group";
 			side="West";
@@ -885,7 +867,7 @@ class Mission
 			id=542;
 			atlOffset=-0.058227539;
 		};
-		class Item17
+		class Item16
 		{
 			dataType="Group";
 			side="West";
@@ -988,7 +970,7 @@ class Mission
 				nAttributes=1;
 			};
 		};
-		class Item18
+		class Item17
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1009,7 +991,7 @@ class Mission
 			type="RHS_AH64D_wd";
 			atlOffset=-0.13717651;
 		};
-		class Item19
+		class Item18
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1028,7 +1010,7 @@ class Mission
 			type="RHS_UH60M_d";
 			atlOffset=-0.081390381;
 		};
-		class Item20
+		class Item19
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1047,7 +1029,7 @@ class Mission
 			type="RHS_UH60M2_d";
 			atlOffset=-0.014343262;
 		};
-		class Item21
+		class Item20
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1066,7 +1048,7 @@ class Mission
 			type="RHS_UH60M_d";
 			atlOffset=-0.058227539;
 		};
-		class Item22
+		class Item21
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1081,7 +1063,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item23
+		class Item22
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1096,7 +1078,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item24
+		class Item23
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1111,7 +1093,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item25
+		class Item24
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1126,7 +1108,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item26
+		class Item25
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1141,7 +1123,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item27
+		class Item26
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1156,7 +1138,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item28
+		class Item27
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1171,7 +1153,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item29
+		class Item28
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1186,7 +1168,7 @@ class Mission
 			type="HeliHEmpty";
 			atlOffset=6.1035156e-005;
 		};
-		class Item30
+		class Item29
 		{
 			dataType="Trigger";
 			position[]={8405.7637,307.63037,2434.1521};
@@ -1203,7 +1185,7 @@ class Mission
 			type="EmptyDetectorAreaR250";
 			atlOffset=-3.0517578e-005;
 		};
-		class Item31
+		class Item30
 		{
 			dataType="Group";
 			side="East";
@@ -1243,7 +1225,7 @@ class Mission
 			};
 			id=581;
 		};
-		class Item32
+		class Item31
 		{
 			dataType="Marker";
 			position[]={8394.3496,360.9917,2813.1902};
@@ -1258,7 +1240,7 @@ class Mission
 			id=583;
 			atlOffset=-29.930267;
 		};
-		class Item33
+		class Item32
 		{
 			dataType="Group";
 			side="West";
@@ -1400,7 +1382,7 @@ class Mission
 			};
 			id=584;
 		};
-		class Item34
+		class Item33
 		{
 			dataType="Group";
 			side="West";
@@ -1542,7 +1524,7 @@ class Mission
 			};
 			id=593;
 		};
-		class Item35
+		class Item34
 		{
 			dataType="Group";
 			side="West";
@@ -1683,7 +1665,7 @@ class Mission
 			};
 			id=602;
 		};
-		class Item36
+		class Item35
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1699,7 +1681,7 @@ class Mission
 			id=603;
 			type="rhsusf_m1025_d_s_m2";
 		};
-		class Item37
+		class Item36
 		{
 			dataType="Group";
 			side="West";
@@ -1804,7 +1786,7 @@ class Mission
 			id=647;
 			atlOffset=0.034576416;
 		};
-		class Item38
+		class Item37
 		{
 			dataType="Group";
 			side="West";
@@ -1912,7 +1894,7 @@ class Mission
 			id=651;
 			atlOffset=-0.037994385;
 		};
-		class Item39
+		class Item38
 		{
 			dataType="Object";
 			class PositionInfo
@@ -1930,7 +1912,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=-0.037994385;
 		};
-		class Item40
+		class Item39
 		{
 			dataType="Group";
 			side="West";
@@ -2035,7 +2017,7 @@ class Mission
 			id=656;
 			atlOffset=0.10134888;
 		};
-		class Item41
+		class Item40
 		{
 			dataType="Group";
 			side="West";
@@ -2143,7 +2125,7 @@ class Mission
 			id=660;
 			atlOffset=-0.32788086;
 		};
-		class Item42
+		class Item41
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2161,7 +2143,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=-0.32788086;
 		};
-		class Item43
+		class Item42
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2179,7 +2161,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=0.034576416;
 		};
-		class Item44
+		class Item43
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2197,7 +2179,7 @@ class Mission
 			type="B_MBT_01_arty_F";
 			atlOffset=0.10134888;
 		};
-		class Item45
+		class Item44
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2213,7 +2195,7 @@ class Mission
 			type="Land_HelipadEmpty_F";
 			atlOffset=6.1035156e-005;
 		};
-		class Item46
+		class Item45
 		{
 			dataType="Marker";
 			position[]={4872.8413,350.27957,-3326.2944};
@@ -2222,58 +2204,24 @@ class Mission
 			id=685;
 			atlOffset=-29.420715;
 		};
-		class Item47
+		class Item46
 		{
 			dataType="Trigger";
-			position[]={5501.6992,369.08945,1491.2957};
-			class Attributes
-			{
-				name="sector_1";
-				condition="false";
-				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=687;
-			type="EmptyDetectorAreaR250";
-		};
-		class Item48
-		{
-			dataType="Trigger";
-			position[]={10999.11,403.97717,2484.6108};
+			position[]={10443.791,424.02432,2708.5938};
 			class Attributes
 			{
 				name="sector";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
 			id=688;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item49
-		{
-			dataType="Trigger";
-			position[]={6292.1147,60.238701,11226.256};
-			class Attributes
-			{
-				name="sector_32";
-				condition="false";
-				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=700;
-				sizeB=700;
-				activationBy="WEST";
-				isRectangle=1;
-			};
-			id=718;
-			type="EmptyDetectorAreaR250";
-		};
-		class Item50
+		class Item47
 		{
 			dataType="Trigger";
 			position[]={8095.0498,306.34036,2280.8364};
@@ -2285,7 +2233,7 @@ class Mission
 			id=774;
 			type="EmptyDetector";
 		};
-		class Item51
+		class Item48
 		{
 			dataType="Trigger";
 			position[]={7807.8262,292.24518,1979.5051};
@@ -2298,7 +2246,7 @@ class Mission
 			id=776;
 			type="EmptyDetector";
 		};
-		class Item52
+		class Item49
 		{
 			dataType="Trigger";
 			position[]={8082.8999,296.04001,1994.766};
@@ -2315,7 +2263,7 @@ class Mission
 			id=777;
 			type="EmptyDetector";
 		};
-		class Item53
+		class Item50
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2333,7 +2281,7 @@ class Mission
 			id=781;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item54
+		class Item51
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2351,7 +2299,7 @@ class Mission
 			id=782;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item55
+		class Item52
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2369,7 +2317,7 @@ class Mission
 			id=783;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item56
+		class Item53
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2387,7 +2335,7 @@ class Mission
 			id=784;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item57
+		class Item54
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2405,7 +2353,7 @@ class Mission
 			id=785;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item58
+		class Item55
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2423,7 +2371,7 @@ class Mission
 			id=786;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item59
+		class Item56
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2441,7 +2389,7 @@ class Mission
 			id=787;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item60
+		class Item57
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2459,7 +2407,7 @@ class Mission
 			id=788;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item61
+		class Item58
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2477,7 +2425,7 @@ class Mission
 			id=789;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item62
+		class Item59
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2495,7 +2443,7 @@ class Mission
 			id=790;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item63
+		class Item60
 		{
 			dataType="Object";
 			class PositionInfo
@@ -2513,124 +2461,480 @@ class Mission
 			id=791;
 			type="rhsusf_m1151_m240_v3_usmc_d";
 		};
-		class Item64
+		class Item61
 		{
 			dataType="Trigger";
-			position[]={2503.0696,304.63141,5509.8062};
+			position[]={12229.534,388.31564,2622.0603};
+			class Attributes
+			{
+				name="sector_1";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=799;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item62
+		{
+			dataType="Trigger";
+			position[]={9523.3857,408.43121,4738.2041};
 			class Attributes
 			{
 				name="sector_2";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=792;
+			id=800;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item65
+		class Item63
 		{
 			dataType="Trigger";
-			position[]={6493.2847,341.60587,5559.8091};
+			position[]={8429.9141,367.25409,3046.864};
 			class Attributes
 			{
 				name="sector_3";
-				condition="false";
+				condition="true";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=793;
+			id=801;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item66
+		class Item64
 		{
 			dataType="Trigger";
-			position[]={10433.5,522.74664,5539.8076};
+			position[]={6352.0898,330.69775,759.44214};
 			class Attributes
 			{
 				name="sector_4";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=794;
+			id=802;
 			type="EmptyDetectorAreaR250";
-			atlOffset=-25.070557;
 		};
-		class Item67
+		class Item65
 		{
 			dataType="Trigger";
-			position[]={2503.0667,244.88098,9480.0205};
+			position[]={4373.9404,383.02042,1007.1327};
 			class Attributes
 			{
 				name="sector_5";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=795;
+			id=803;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item68
+		class Item66
 		{
 			dataType="Trigger";
-			position[]={6483.2822,130.07832,9490.0195};
+			position[]={2368.4126,423.0733,1002.2644};
 			class Attributes
 			{
 				name="sector_6";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=796;
+			id=804;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item69
+		class Item67
 		{
 			dataType="Trigger";
-			position[]={10423.496,195.75317,9520.0225};
+			position[]={965.68213,260.63629,2988.3157};
 			class Attributes
 			{
 				name="sector_7";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=797;
+			id=805;
 			type="EmptyDetectorAreaR250";
 		};
-		class Item70
+		class Item68
 		{
 			dataType="Trigger";
-			position[]={1526.2854,499.88818,1508.9431};
+			position[]={2975.0996,388.72781,3009.2476};
+			class Attributes
+			{
+				name="sector_8";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=806;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item69
+		{
+			dataType="Trigger";
+			position[]={6362.0474,459.33087,2744.0789};
 			class Attributes
 			{
 				name="sector_9";
 				condition="false";
 				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
-				sizeA=2500;
-				sizeB=2500;
+				sizeA=1000;
+				sizeB=1000;
 				activationBy="WEST";
 				isRectangle=1;
 			};
-			id=798;
+			id=807;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item70
+		{
+			dataType="Trigger";
+			position[]={2993.7297,335.93549,5016.5161};
+			class Attributes
+			{
+				name="sector_10";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=808;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item71
+		{
+			dataType="Trigger";
+			position[]={990.4577,391.51523,5016.5151};
+			class Attributes
+			{
+				name="sector_11";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=809;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item72
+		{
+			dataType="Trigger";
+			position[]={4997.0015,259.75739,5011.0254};
+			class Attributes
+			{
+				name="sector_12";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=810;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item73
+		{
+			dataType="Trigger";
+			position[]={7000.2744,332.15784,5011.0254};
+			class Attributes
+			{
+				name="sector_13";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=811;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item74
+		{
+			dataType="Trigger";
+			position[]={8999.9854,236.77481,7016.9512};
+			class Attributes
+			{
+				name="sector_14";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=812;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item75
+		{
+			dataType="Trigger";
+			position[]={11019.724,381.228,6764.4834};
+			class Attributes
+			{
+				name="sector_15";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=813;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item76
+		{
+			dataType="Trigger";
+			position[]={5988.7813,129.76329,6956.1079};
+			class Attributes
+			{
+				name="sector_16";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=814;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item77
+		{
+			dataType="Trigger";
+			position[]={1457.7183,509.83505,7196.5776};
+			class Attributes
+			{
+				name="sector_17";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=815;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item78
+		{
+			dataType="Trigger";
+			position[]={3540.8887,238.44763,8018.6133};
+			class Attributes
+			{
+				name="sector_18";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=816;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item79
+		{
+			dataType="Trigger";
+			position[]={3649.1851,74.771011,9976.9561};
+			class Attributes
+			{
+				name="sector_19";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=817;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item80
+		{
+			dataType="Trigger";
+			position[]={6019.0444,112.46125,9046.1396};
+			class Attributes
+			{
+				name="sector_20";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=818;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item81
+		{
+			dataType="Trigger";
+			position[]={2016.8655,157.09077,11662.449};
+			class Attributes
+			{
+				name="sector_21";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=819;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item82
+		{
+			dataType="Trigger";
+			position[]={3998.5271,32.438457,11770.381};
+			class Attributes
+			{
+				name="sector_22";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=820;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item83
+		{
+			dataType="Trigger";
+			position[]={6023.2539,66.343109,11045.286};
+			class Attributes
+			{
+				name="sector_23";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=821;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item84
+		{
+			dataType="Trigger";
+			position[]={10020.644,180.67068,11009.443};
+			class Attributes
+			{
+				name="sector_24";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=822;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item85
+		{
+			dataType="Trigger";
+			position[]={12076.889,156.30898,10737.575};
+			class Attributes
+			{
+				name="sector_25";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=823;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item86
+		{
+			dataType="Trigger";
+			position[]={11552.298,249.8766,8780.8857};
+			class Attributes
+			{
+				name="sector_26";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=824;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item87
+		{
+			dataType="Trigger";
+			position[]={8007.1313,215.05504,11029.097};
+			class Attributes
+			{
+				name="sector_27";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=825;
+			type="EmptyDetectorAreaR250";
+		};
+		class Item88
+		{
+			dataType="Trigger";
+			position[]={9469.8301,228.45084,9000.2197};
+			class Attributes
+			{
+				name="sector_28";
+				condition="false";
+				onActivation="call{private _numberToSpawn = ((random 6) + 4);" \n "ON_MISSION = true;[thisTrigger, thisList, _numberToSpawn] execVM ""triggerActivation.sqf"";}";
+				sizeA=1000;
+				sizeB=1000;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=826;
 			type="EmptyDetectorAreaR250";
 		};
 	};

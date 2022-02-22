@@ -1,4 +1,4 @@
-private ['_numberOfRounds','_ammoType', '_position', '_fireMissionName', '_artyRounds' ];
+private ['_numberOfRounds','_ammoType', '_position', '_fireMissionName', '_artyRounds', '_repeatFireMission'];
 _numberOfRounds = _this select 0;
 _ammoType = _this select 1;
 _position = _this select 2;
@@ -21,7 +21,7 @@ private _artilleryCall = {
 	private _artyMessage = format ['This is %1 requesting arty mission on grid %2, how copy over.', groupId group player, _gridPos];
 	private _firMissionRecord = player createDiaryRecord ['Arty Record',[_fireMissionName, _artyMessage]];
 	private _timesFailed = 0;
-	private _timeoutCount = (floor random 10) + 5;
+	private _timeoutCount = ((floor random 10) + 5);
 	private _artyRounds = [_ammoType] call _parseAmmoType;
 	private _fireMissionFailed = false;
 
@@ -63,3 +63,9 @@ private _artilleryCall = {
 };
 
 [] call _artilleryCall;
+
+// create link to call again
+//  player createDiaryRecord ["Diary", ["Execute","<execute expression='hint ""Some code"";'>Some text</execute>"], taskNull, "", false];
+_repeatFireMission = format['<execute expression="[%1, ''%2'', %3, ''%4'']call jMD_fnc_artilleryCall;">Click here to repeat fire mission %4', _numberOfRounds, _ammoType, _position, _fireMissionName];
+ 
+player createDiaryRecord ['Arty Record',[_fireMissionName, _repeatFireMission]];

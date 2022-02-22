@@ -112,21 +112,21 @@ private _artyProcessor = {
 			[_marker, _missionName] call _replaceMarker;
 			continue
 		}; 
-		if ((_mrkText == 'pickup') || (_mrkText == 'pickup')) then {
+		if ((_mrkText == 'pickup') || (_mrkText == 'exfil')) then {
 			[_position, 'exfil'] execVM 'functions\transport\callTransport.sqf';
 			private _missionName = [_mrkText] call _taskMarkerName;
 			[_marker, _missionName] call _replaceMarker;
 			continue
 		}; 
 		if (_mrkText == 'infil') then {
-			[_position, 'exinfilfil'] execVM 'functions\transport\callTransport.sqf';
+			[_position, 'infil'] execVM 'functions\transport\callTransport.sqf';
 			private _missionName = [_mrkText] call _taskMarkerName;
 			[_marker, _missionName] call _replaceMarker;
 			continue
 		}; 
 // []execVM 'functions\CAS\callCAS.sqf';
 		if (_mrkText == 'cas') then {
-			[_position, 'exinfilfil'] execVM 'functions\transport\callTransport.sqf';
+			[_position, 'infil'] execVM 'functions\transport\callTransport.sqf';
 			private _missionName = [_mrkText] call _taskMarkerName;
 			[_marker, _missionName] call _replaceMarker;
 			continue
