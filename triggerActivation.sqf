@@ -13,7 +13,8 @@ private _diaryTitle = format['Trigger %1 Activated', _trigger];
 private _isPlayerInList = ( _thisList findIf{ _x == player}) > 0;
 private _isPlayerWaypointInList = (waypoints player findIf{ [_trigger,waypointPosition _x] call BIS_fnc_inTrigger}) >= 0;
 private _allLocationTypes = LOCATION_TYPES;
-private _triggerAreaRadius = ceil((( triggerArea _trigger select 0 ) + (triggerArea _trigger select 1)) * (1/3));
+private _triggerAreaRadius = ( triggerArea _trigger select 0 );
+private _triggerArea = [triggerArea _trigger select 0, triggerArea _trigger select 1];
 private _activePositions = [];
 // "_allLocationTypes pushBack configName _x" configClasses (configFile >> "CfgLocationTypes");
 private _nearbyLocations = nearestLocations [position _trigger, _allLocationTypes, _triggerAreaRadius];
@@ -70,7 +71,7 @@ if ((count waypoints group player) > 1) then {
 private _aoMarker = createMarker[format['%1', _trigger], position _trigger];
 _aoMarker setMarkerBrush 'CROSS';
 _aoMarker setMarkerShape 'RECTANGLE';
-_aoMarker setMarkerSize [_triggerAreaRadius, _triggerAreaRadius];
+_aoMarker setMarkerSize _triggerArea;
 _aoMarker setMarkerColor 'ColorOrange';
 
 private _sectorTrigger = createTrigger['EmptyDetector', position _trigger];
@@ -82,7 +83,7 @@ private _sectorTriggerDeactivation = format [
 	private _loc = markerPos (ARRAY_OF_ROUTES select 0); 
 	[thisTrigger]execVM "functions\findAndActivateNearestTrigger.sqf"; 
 	deletevehicle thisTrigger;', _aoMarker, _parentTaskId];
-_sectorTrigger setTriggerArea [_triggerAreaRadius,_triggerAreaRadius,0,true];
+_sectorTrigger setTriggerArea [_triggerArea select 0, _triggerArea select 1, 0,true];
 _sectorTrigger setTriggerActivation ['EAST', 'PRESENT', true];
 _sectorTrigger setTriggerStatements ['this', _sectorTriggerActivation, _sectorTriggerDeactivation];
 

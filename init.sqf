@@ -1,11 +1,14 @@
 ['intro',false] call BIS_fnc_blackOut;
 COMMON_DONE = false ;
 [] execVM 'common.sqf';
+[] execVM 'briefing.sqf';
 waitUntil {COMMON_DONE};
 [] spawn jMD_fnc_spawnLoop;
 // private _groupsNamed = false;
 _groupsNamed = [] execVM 'nameAllGroups.sqf';
-TCL_Initialize = True; 
-[300, false, 6] execFSM 'DCO_Fsm.fsm';
+// TCL_Initialize = True; 
+TCL_Path = "TCL_System\";
+call compile preprocessFileLineNumbers (TCL_Path+"TCL_Preprocess.sqf");
+// [300, false, 6] execFSM 'DCO_Fsm.fsm';
 sleep 5;
 ['intro', true] call BIS_fnc_blackIn;
